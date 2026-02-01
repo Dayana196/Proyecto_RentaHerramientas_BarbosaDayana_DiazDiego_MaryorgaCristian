@@ -33,13 +33,19 @@ public class AuthUsuarioService {
     }
 
     public Usuario registrar(Usuario usuario) {
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        
-        List<String> roles = new ArrayList<>();
-        roles.add("ROLE_USER");
-        usuario.setRoles(roles);
-        
-        return usuarioRepositoryPort.save(usuario);
-    }
+    // 1. Encriptamos la contraseña que viene de Postman
+    usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+    
+    // 2. Verificamos si enviaste roles en el JSON
+    // Si la lista está vacía, puedes lanzar un error o asignar uno por defecto
+    if (usuario.getRoles() == null || usuario.getRoles().isEmpty()) {
+        List<String> rolesPorDefecto = new ArrayList<>();
+        rolesPorDefecto.add("CLIENTE"); // Solo si no mandas nada
+        usuario.setRoles(rolesPorDefecto);
+    } 
+    // Si mandaste ["ADMIN"], ["PROVEEDOR"] o ["CLIENTE"], se quedan esos.
+
+    return usuarioRepositoryPort.save(usuario);
+}
 
 }
