@@ -1,7 +1,7 @@
 :root {
     --bg-dark: #121212;
     --bg-card: #1E1E1E;
-    --primary-orange:#FF751F;
+    --primary-orange: #FF751F;
     --hover-orange: #FF751F;
     --text-white: #FFFFFF;
     --text-gray: #A0A0A0;
@@ -24,7 +24,7 @@ body {
     flex-direction: column;
 }
 
-/* HEADER */
+
 header {
     width: 100%;
     max-width: 1200px;
@@ -52,7 +52,7 @@ header {
     color: var(--primary-orange);
 }
 
-/* FORM */
+
 .form-container {
     flex: 1;
     display: flex;
@@ -62,10 +62,10 @@ header {
 
 form {
     width: 100%;
-    max-width: 440px;
+    max-width: 500px;
     background-color: var(--bg-card);
-    padding: 2.8rem;
-    border-radius: 1.6rem;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -74,7 +74,10 @@ form {
 }
 
 .title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .description {
@@ -105,16 +108,15 @@ form {
     border-color: var(--primary-orange);
 }
 
-/* ROL */
+
 .role-input {
-    background-color: #1a1a1a;
-    color: var(--primary-orange);
-    font-weight: 700;
     text-align: center;
-    cursor: not-allowed;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* BUTTON */
+
 .btn-main {
     width: 100%;
     height: 3rem;
@@ -130,7 +132,7 @@ form {
     background-color: var(--hover-orange);
 }
 
-/* WARNING */
+
 .warning {
     margin-top: 1.4rem;
     font-size: 0.75rem;
@@ -155,12 +157,13 @@ form {
 }
 
 
-/* ANIMATION */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
