@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Toolsx</title>
+
+    <!-- GOOGLE FONTS (Orbitron) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/main/resources/static/css/cliente.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+            <span class="name-logo">Toolsx</span>
+        </div>
+
+        <nav class="navigation">
+            <a href="#">Sign in</a>
+            <a href="#" class="btn-demo">Register</a>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <form id="loginForm">
+            <h2 class="title">Login Client</h2>
+            <p class="description">Hey, enter your details to get signed in</p>
+
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Enter Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <a href="#" class="help-link">Having trouble logging in?</a>
+
+            <button type="submit" class="btn-main">Sign in</button>
+
+            <div class="line-with-text">
+                <span>or login with</span>
+            </div>
+
+            <div class="auth-grid">
+                <button type="button" class="auth-btn google">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Google</span>
+                </button>
+
+                <button type="button" class="auth-btn apple">
+                    <i class="fa-brands fa-apple"></i>
+                    <span>Apple ID</span>
+                </button>
+
+                <button type="button" class="auth-btn facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Facebook</span>
+                </button>
+
+            </div>
+
+            <p class="request-link">
+                Don't have an account? <a href="#">Request Now</a>
+            </p>
+        </form>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
