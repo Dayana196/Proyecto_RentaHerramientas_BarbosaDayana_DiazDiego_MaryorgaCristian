@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Toolsx</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/register.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+            <span class="name-logo">Toolsx</span>
+        </div>
+        <nav class="navigation">
+            <a href="login.html">Sign in</a>
+            <a href="register.html" class="btn-demo active">Register</a>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <form id="registerForm">
+            <h2 class="title">Create Account</h2>
+            <p class="description">Fill in the details to create your account</p>
+
+            <div class="input-group">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+            </div>
+
+            <button type="submit" class="btn-main">Register</button>
+
+            <p class="request-link">
+                Already have an account?
+                <a href="login.html">Sign in</a>
+            </p>
+        </form>
+    </main>
+
+    <script src="/src/main/resources/static/js/cliente/login.js"></script>
+    <script src="/src/main/resources/static/js/cliente/register.js"></script>
+
+
+</body>
+
+</html>
