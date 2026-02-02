@@ -1,6 +1,3 @@
-/* IMPORTACIÓN DE FUENTE BASE */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
 /* VARIABLES */
 :root {
     --bg-dark: #121212;
@@ -52,17 +49,10 @@ header {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary-orange);
-    letter-spacing: 2px;
 }
 
 .logo-icon {
-    font-size: 1.4rem;
     color: var(--primary-orange);
-    transition: transform 0.3s ease;
-}
-
-.logo:hover .logo-icon {
-    transform: rotate(-10deg);
 }
 
 /* NAV */
@@ -76,11 +66,6 @@ header {
     text-decoration: none;
     font-size: 0.9rem;
     color: var(--text-gray);
-    transition: color 0.3s;
-}
-
-.navigation a:hover {
-    color: var(--primary-orange);
 }
 
 .btn-demo {
@@ -89,10 +74,6 @@ header {
     padding: 0.6rem 1.4rem;
     border-radius: 6px;
     font-weight: 700;
-}
-
-.btn-demo:hover {
-    background-color: var(--hover-orange);
 }
 
 /* MAIN */
@@ -107,17 +88,17 @@ header {
 /* FORM */
 form {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     background-color: var(--bg-card);
     padding: 2.5rem;
     border-radius: 1.5rem;
     border: 1px solid var(--border-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* TEXT */
 .title {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
@@ -152,109 +133,33 @@ form {
     border-color: var(--primary-orange);
 }
 
-/* LINKS */
-.help-link {
-    width: 100%;
-    font-size: 0.8rem;
-    margin: 1rem 0;
-    color: var(--text-gray);
-    text-decoration: none;
-}
-
-.help-link:hover {
-    color: var(--primary-orange);
-}
-
 /* BUTTON */
 .btn-main {
     width: 100%;
     height: 3rem;
+    margin-top: 1.5rem;
     background-color: var(--primary-orange);
     border: none;
     border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
-    margin-bottom: 1.5rem;
 }
 
 .btn-main:hover {
     background-color: var(--hover-orange);
 }
 
-/* DIVIDER */
-.line-with-text {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--text-gray);
-    margin-bottom: 1.5rem;
-}
-
-.line-with-text::before,
-.line-with-text::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--border-color);
-    margin: 0 1rem;
-}
-
-/* SOCIAL */
-.auth-grid {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.auth-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.7rem;
-    background: transparent;
-    border: 1px solid #000;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.auth-btn:hover {
-    background-color: #464444;
-}
-
-.auth-btn img {
-    width: 18px;
-}
-
-/* FOOTER TEXT */
+/* FOOTER LINK */
 .request-link {
+    margin-top: 1.2rem;
     font-size: 0.85rem;
     color: var(--text-gray);
-    margin-top: 1rem;
 }
 
 .request-link a {
     color: var(--primary-orange);
-    text-decoration: none;
     font-weight: 700;
-}
-
-.auth-btn i {
-    color: #FFFFFF;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.auth-btn.google:hover i {
-    color: #DB4437;
-}
-
-.auth-btn.facebook:hover i {
-    color: #1877F2;
-}
-
-.auth-btn.apple:hover i {
-    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .navigation a.active {
