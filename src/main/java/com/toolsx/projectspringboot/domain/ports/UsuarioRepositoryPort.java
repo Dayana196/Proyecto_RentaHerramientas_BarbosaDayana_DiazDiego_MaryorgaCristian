@@ -6,5 +6,7 @@ import com.toolsx.projectspringboot.domain.model.Usuario;
 
 public interface UsuarioRepositoryPort {
     Optional <Usuario> findByUsuario(String nombreUsuario);
-    Usuario save(Usuario usuario);
+    Usuario save(Usuario usuario); 
+    boolean existsByUsuario(String usuario);
+    boolean existsByCorreo(String correo);
 }

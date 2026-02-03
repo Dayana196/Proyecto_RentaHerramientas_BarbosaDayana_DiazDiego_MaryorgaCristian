@@ -1,6 +1,5 @@
-package com.toolsx.projectspringboot.application.mapper;
+package com.toolsx.projectspringboot.infrastructure.persistence.mapper;
 
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
@@ -11,6 +10,7 @@ import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioE
 
 @Component
 public class UsuarioMapper {
+
     public Usuario toDomain(UsuarioEntity entity) {
         if (entity == null) return null;
         Usuario usuario = new Usuario();
@@ -28,8 +28,8 @@ public class UsuarioMapper {
         return usuario;
     }
 
-    public UsuarioEntity toEntity(Usuario domain){
-       if (domain == null) return null;
+    public UsuarioEntity toEntity(Usuario domain) {
+        if (domain == null) return null;
 
         UsuarioEntity entity = new UsuarioEntity();
         entity.setId(domain.getId());
@@ -37,17 +37,7 @@ public class UsuarioMapper {
         entity.setCorreo(domain.getCorreo());
         entity.setPassword(domain.getPassword());
 
-        if (domain.getRoles() != null) {
-            Set<RolEntity> rolesEntity = domain.getRoles().stream()
-                .map(nombreRol -> {
-                    RolEntity rol = new RolEntity();
-                    rol.setNombre(nombreRol); 
-                    return rol;
-                })
-                .collect(Collectors.toSet());
-            entity.setRoles(rolesEntity);
-        }
-
         return entity;
     }
+
 }
