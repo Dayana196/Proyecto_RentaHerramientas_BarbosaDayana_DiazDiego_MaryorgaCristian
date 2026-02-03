@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.domain.ports.UsuarioRepositoryPort;
+import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.LoginRequest;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.RolEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.mapper.UsuarioMapper;
@@ -14,7 +15,6 @@ import com.toolsx.projectspringboot.infrastructure.persistence.repository.RolJpa
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.UsuarioJpaRepository;
 import com.toolsx.projectspringboot.infrastructure.segurity.JwtUtil;
 
-import jakarta.transaction.Transactional;
 
 @Service
 public class AuthUsuarioService {
@@ -36,22 +36,27 @@ public class AuthUsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public String login(String nombreUsuario, String passwordPlano) {
-        Usuario usuario = usuarioRepositoryPort.findByUsuario(nombreUsuario)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        if (!passwordEncoder.matches(passwordPlano.trim(), usuario.getPassword().trim())) {
+    public String login(String correo, String passwordPlano) {
+
+        Usuario usuario = usuarioRepositoryPort.findByCorreo(correo)
+                .orElseThrow(() -> new RuntimeException("Usuario no existe"));
+
+        if (!passwordEncoder.matches(passwordPlano, usuario.getPassword())) {
             throw new RuntimeException("Contraseña incorrecta");
         }
 
+        // 🔐 AQUÍ se genera el JWT
         return jwtUtil.generateToken(usuario);
     }
+
 
     public Usuario registrar(Usuario usuarioDTO) {
             // 1. Crear la Entidad de Usuario
             UsuarioEntity nuevaEntidad = new UsuarioEntity();
             nuevaEntidad.setUsuario(usuarioDTO.getUsuario());
             nuevaEntidad.setCorreo(usuarioDTO.getCorreo());
-            nuevaEntidad.setPassword(usuarioDTO.getPassword()); // Recuerda encriptar después
+            nuevaEntidad.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
+
 
             // 2. Mapear el rol manual a una Entidad de Rol real
             Set<RolEntity> rolesAsignados = new HashSet<>();

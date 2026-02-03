@@ -2,6 +2,7 @@ package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +27,26 @@ public class AuthRestController {
     }
 
     @PostMapping("/login")
-        public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-            try {
-                return ResponseEntity.ok("Inicio de sesión exitoso");
-            } catch (RuntimeException e) {
-                return ResponseEntity.status(401).body(Map.of("error", e.getMessage()));
-            }
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+
+        try {
+            String token = authService.login(
+                    request.getCorreo(),
+                    request.getPassword()
+            );
+
+            return ResponseEntity.ok(
+                Map.of("token", token)
+            );
+
+        } catch (RuntimeException e) {
+            return ResponseEntity
+                    .status(401)
+                    .body("Correo o contraseña incorrectos");
+        }
     }
+
+
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Usuario usuario) {

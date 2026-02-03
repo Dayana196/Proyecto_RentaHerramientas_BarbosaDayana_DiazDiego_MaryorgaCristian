@@ -16,32 +16,46 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class JwtAuthenticationFilter extends OncePerRequestFilter{
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
     private final JwtUtil jwtUtil;
     private final UsuarioRepositoryPort usuarioRepositoryPort;
-    
+
     public JwtAuthenticationFilter(JwtUtil jwtUtil, UsuarioRepositoryPort usuarioRepositoryPort) {
         this.jwtUtil = jwtUtil;
         this.usuarioRepositoryPort = usuarioRepositoryPort;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException{
-        String authHeader = request.getHeader("Autorizado");
+    protected void doFilterInternal(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        FilterChain filterChain
+    ) throws ServletException, IOException {
 
-        if (authHeader != null && authHeader.startsWith("Portador ")){
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+
             String token = authHeader.substring(7);
             String username = jwtUtil.extractUsername(token);
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+
                 usuarioRepositoryPort.findByUsuario(username).ifPresent(usuario -> {
-                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                            usuario, null, new ArrayList<>()
-                    );
+
+                    UsernamePasswordAuthenticationToken authToken =
+                        new UsernamePasswordAuthenticationToken(
+                            usuario,
+                            null,
+                            new ArrayList<>()
+                        );
+
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                 });
             }
         }
+
         filterChain.doFilter(request, response);
     }
 }

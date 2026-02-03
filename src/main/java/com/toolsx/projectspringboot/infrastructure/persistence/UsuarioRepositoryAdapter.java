@@ -7,15 +7,19 @@ import org.springframework.stereotype.Repository;
 import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.domain.ports.UsuarioRepositoryPort;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioEntity;
+import com.toolsx.projectspringboot.infrastructure.persistence.mapper.UsuarioMapper;
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.UsuarioJpaRepository;
 
 @Repository
 public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort{
 
+    private UsuarioMapper usuarioMapper;
+
     private final UsuarioJpaRepository usuarioJpaRepository;
 
-    public UsuarioRepositoryAdapter(UsuarioJpaRepository usuarioJpaRepository) {
+    public UsuarioRepositoryAdapter(UsuarioJpaRepository usuarioJpaRepository, UsuarioMapper usuarioMapper) {
         this.usuarioJpaRepository = usuarioJpaRepository;
+        this.usuarioMapper = usuarioMapper;
     }
 
     @Override
@@ -58,5 +62,15 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort{
     public boolean existsByCorreo(String correo) {
         return usuarioJpaRepository.existsByCorreo(correo);
     }
+
+    @Override
+    public Optional<Usuario> findByCorreo(String correo) {
+        return usuarioJpaRepository.findByCorreo(correo)
+                .map(entity -> usuarioMapper.toDomain(entity));
+    }
+
+
+
+    
 
 }

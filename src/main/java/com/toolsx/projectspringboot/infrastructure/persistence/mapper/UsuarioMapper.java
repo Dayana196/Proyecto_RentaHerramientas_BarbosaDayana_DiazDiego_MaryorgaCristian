@@ -16,6 +16,7 @@ public class UsuarioMapper {
         Usuario usuario = new Usuario();
         usuario.setId(entity.getId());
         usuario.setUsuario(entity.getUsuario());
+        usuario.setCorreo(entity.getCorreo());
         usuario.setPassword(entity.getPassword());
         
         if (entity.getRoles() != null) {
