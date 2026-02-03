@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | TOOLSX</title>
+
+    <link rel="stylesheet" href="/src/main/resources/static/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-screwdriver-wrench logo-icon"></i>
+                <h1>
+                    <span class="orange">T</span><span class="white">oolsx</span>
+                </h1>
+            </div>
+
+            <nav>
+                <a href="#" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-user-plus"></i> Registrar Cliente</a>
+                <a href="#"><i class="fas fa-store"></i> Registrar Proveedor</a>
+                <a href="#"><i class="fas fa-users"></i> Usuarios</a>
+                <a href="#"><i class="fas fa-tools"></i> Herramientas</a>
+                <a href="#"><i class="fas fa-box"></i> Alquileres</a>
+                <a href="#"><i class="fas fa-wallet"></i> Pagos</a>
+                <a href="#"><i class="fas fa-chart-bar"></i> Reportes</a>
+            </nav>
+
+            <button class="logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+        </aside>
+
+
+        <main class="main-content">
+
+
+            <header class="action-bar">
+                <div>
+                    <h1><i class="fas fa-shield-halved"></i> Panel del Administrador</h1>
+                    <p>Gestión general de la plataforma ToolsX</p>
+                </div>
+            </header>
+
+
+            <section class="top-stats">
+                <div class="stat-card">
+                    <span class="label">Clientes</span>
+                    <h2>1</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span class="label">Proveedores</span>
+                    <h2>0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span class="label">Herramientas</span>
+                    <h2>0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <span class="label">Ingresos</span>
+                    <h2>$18.500.000</h2>
+                </div>
+            </section>
+
+
+            <section class="quick-actions">
+                <h2><i class="fas fa-bolt"></i> Acciones rápidas</h2>
+
+                <div class="actions-grid">
+                    <button class="btn-action btn-orange">
+                        <i class="fas fa-user-plus"></i>
+                        Registrar Cliente
+                    </button>
+
+                    <button class="btn-action btn-orange">
+                        <i class="fas fa-store"></i>
+                        Registrar Proveedor
+                    </button>
+
+                    <button class="btn-action btn-red">
+                        <i class="fas fa-car-crash"></i>
+                        Reportar Daño
+                    </button>
+
+                    <button class="btn-action btn-grey">
+                        <i class="fas fa-file-pdf"></i>
+                        Generar Reporte
+                    </button>
+                </div>
+            </section>
+
+
+            <section class="data-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Usuarios registrados</h2>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Dayana Barbosa</td>
+                            <td>dayana12@toolsx.com</td>
+                            <td><span class="badge cliente">Cliente</span></td>
+                            <td><span class="badge activo">Activo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section class="grid-bottom">
+                <div class="history-box">
+                    <h3><i class="fas fa-history"></i> Historial de alquileres</h3>
+                </div>
+
+                <div class="supervision-box">
+                    <h3><i class="fas fa-microscope"></i> Supervisión de equipos</h3>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

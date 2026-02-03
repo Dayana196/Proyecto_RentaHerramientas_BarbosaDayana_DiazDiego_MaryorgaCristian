@@ -1,0 +1,255 @@
+:root {
+    --primary-orange: #ff6600;
+    --dark-pure: #000;
+    --dark-card: #121212;
+    --border-grey: #2a2a2a;
+    --text-main: #fff;
+    --text-muted: #a0a0a0;
+    --red-danger: #e74c3c;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: var(--dark-pure);
+    color: var(--text-main);
+}
+
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.sidebar {
+    width: 260px;
+    background: var(--dark-card);
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 26px;
+    color: white;
+}
+
+
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: var(--primary-orange);
+    color: #000;
+}
+
+.logout {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+
+.action-bar {
+    background: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.action-bar h1 {
+    color: var(--primary-orange);
+}
+
+.action-bar p {
+    color: var(--text-muted);
+}
+
+
+.top-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: var(--dark-card);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-orange);
+}
+
+.stat-card .label {
+    color: var(--text-muted);
+}
+
+.stat-card h2 {
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+
+.quick-actions {
+    background: var(--dark-card);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.quick-actions h2 {
+    color: var(--primary-orange);
+    margin-bottom: 20px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.btn-action {
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-orange {
+    background: var(--primary-orange);
+    color: #000;
+}
+
+.btn-red {
+    background: var(--red-danger);
+    color: #fff;
+}
+
+.btn-grey {
+    background: #333;
+    color: #fff;
+}
+
+
+.data-section {
+    background: var(--dark-card);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    color: var(--primary-orange);
+    padding: 15px;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.badge.cliente {
+    background: #3498db;
+}
+
+.badge.activo {
+    background: #2ecc71;
+}
+
+
+.grid-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.history-box,
+.supervision-box {
+    background: var(--dark-card);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+
+.orange {
+    color: var(--primary-orange);
+}
+
+.white {
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .top-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
