@@ -132,10 +132,93 @@ nav a:hover:after {
 }
 
 .btn-secondary:hover {
-    background: rgba(111, 78, 55, 0.05);
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+} 
+
+
+.btn-primaryy {
+    color: var(--text-With);
+}
+
+.btn-primaryy:hover {
     transform: translateY(-3px);
 }
 
+.btn-secondaryy {
+    color: var(--text-With);
+}
+
+.btn-secondaryy:hover {
+    transform: translateY(-3px);
+}
+
+.btn-secondaryy, .btn-primaryy {
+    position: relative;
+    padding: 8px 20px;
+    
+}
+
+.btn-secondaryy::after, .btn-primaryy::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: var(--text-Orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.btn-secondaryy:hover::after, .btn-primaryy:hover::after {
+    transform: scaleX(1);
+}
+
+.submenu a::after {
+    display: none;
+}
+
+.btn-wrapper {
+    position: relative;
+    
+}
+
+.submenu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 0;
+    min-width: 160px;
+    box-shadow: 0 0 15px #ff62002c;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.btn-wrapper:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.submenu a:hover {
+    background: rgba(111, 78, 55, 0.08);
+}
 
 .hero {
     height: 100vh;
@@ -167,6 +250,23 @@ nav a:hover:after {
 
 .hero .container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.hero .container img {
+    height: 400px;
+    width: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    flex-shrink: 0;
+}
+
+.hero .container img:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .hero-subtitle {
@@ -203,7 +303,7 @@ nav a:hover:after {
 
 .hero-text {
     font-size: 16px;
-    margin-bottom: 120px;
+    margin-bottom: 70px;
     max-width: 700px;
 }
 
@@ -220,7 +320,6 @@ nav a:hover:after {
     border-top: 4px solid var(--text-Orange);
 }
 
-
 /**/
 
 
@@ -232,15 +331,16 @@ nav a:hover:after {
 
 .section-subtitle {
     font-size: 20px;
-    color: var(--text-Orange);
+    font-weight: 400;
+    color: var(--text-With);
     margin-bottom: 15px;
 }
 
 .section-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 42px;
-    color: var(--text-With);
-    margin-bottom: 20px;
+    color: var(--text-Orange);
+    margin-bottom: 35px;
     position: relative;
     display: inline-block;
 }
@@ -258,7 +358,8 @@ nav a:hover:after {
 
 .section-desc {
     font-size: 18px;
-    color: var(--text-Orange);
+    font-weight: 400;
+    color: var(--text-With);
 }
 
 .product-grid {
@@ -317,7 +418,6 @@ nav a:hover:after {
 .product-title {
     font-size: 24px;
     color: var(--text-Orange);
-    /*preguntar*/ 
     margin-bottom: 10px;
 }
 
@@ -349,8 +449,6 @@ h1, h2, h3, h4 {
     font-weight: 700;
     letter-spacing: 0.5px;
 }
-
-
 
 /**/
 
@@ -384,7 +482,7 @@ footer {
     left: 0;
     width: 50px;
     height: 2px;
-    background: var(--text-With);
+    background: var(--translation);
 }
 
 .footer-links {
@@ -418,7 +516,7 @@ footer {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     color: var(--text-Orange);
     font-size: 18px;
@@ -426,16 +524,16 @@ footer {
 }
 
 .social-links a:hover {
-    background: var(--translation);
+    background: var(--seccion);
     transform: translateY(-3px);
 }
 
 .copyright {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgb(255, 255, 255, 0.1);
+    border-top: 1px solid var(--translation);
     color: var(--text-Orange);
-    font-size: 15px;
+    font-size: 13px;
 }
 
 
