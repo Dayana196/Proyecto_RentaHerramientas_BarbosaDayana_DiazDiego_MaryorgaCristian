@@ -4,11 +4,11 @@ form.addEventListener('submit', function(e) {
     e.preventDefault(); // Evita que se recargue la página
 
     const data = {
-        correo: document.getElementById('email').value, // coincide con tu backend
+        correo: document.getElementById('email').value,
         password: document.getElementById('password').value
     };
 
-    fetch('http://localhost:8080/auth/login', { // URL de tu endpoint Spring Boot
+    fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ form.addEventListener('submit', function(e) {
         localStorage.setItem('token', result.token);
 
         // Redirigir a la página protegida
-        window.location.href = '/index.html';
+        window.location.href = 'http://127.0.0.1:5500/src/main/resources/templates/index.html';
     })
     .catch(error => {
         alert(error.message); // Mensaje de error
