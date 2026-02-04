@@ -23,10 +23,7 @@ form.addEventListener('submit', function(e) {
         return response.json();
     })
     .then(result => {
-        // Guardamos el token recibido
         localStorage.setItem('token', result.token);
-
-        // Redirigir a la página protegida
         window.location.href = 'http://127.0.0.1:5500/src/main/resources/templates/index.html';
     })
     .catch(error => {

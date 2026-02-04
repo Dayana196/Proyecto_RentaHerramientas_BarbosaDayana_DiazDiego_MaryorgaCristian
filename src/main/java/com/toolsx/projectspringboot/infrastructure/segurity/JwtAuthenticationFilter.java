@@ -1,13 +1,14 @@
 package com.toolsx.projectspringboot.infrastructure.segurity;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collections;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.domain.ports.UsuarioRepositoryPort;
 
 import jakarta.servlet.FilterChain;
@@ -21,38 +22,50 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private final UsuarioRepositoryPort usuarioRepositoryPort;
 
-    public JwtAuthenticationFilter(JwtUtil jwtUtil, UsuarioRepositoryPort usuarioRepositoryPort) {
+    public JwtAuthenticationFilter(
+            JwtUtil jwtUtil,
+            UsuarioRepositoryPort usuarioRepositoryPort
+    ) {
         this.jwtUtil = jwtUtil;
         this.usuarioRepositoryPort = usuarioRepositoryPort;
     }
 
     @Override
     protected void doFilterInternal(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        FilterChain filterChain
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain
     ) throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        // 🔹 Si no hay token, continúa (rutas públicas)
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-            String token = authHeader.substring(7);
-            String username = jwtUtil.extractUsername(token);
+        String token = authHeader.substring(7);
+        String correo = jwtUtil.extractUsername(token); // sub = correo
 
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (correo != null &&
+            SecurityContextHolder.getContext().getAuthentication() == null) {
 
-                usuarioRepositoryPort.findByUsuario(username).ifPresent(usuario -> {
+            Usuario usuario = usuarioRepositoryPort
+                    .findByCorreo(correo)   // 🔥 CAMBIO CLAVE
+                    .orElse(null);
 
-                    UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(
-                            usuario,
-                            null,
-                            new ArrayList<>()
-                        );
+            if (usuario != null && jwtUtil.isTokenValid(token)) {
 
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
-                });
+                UsernamePasswordAuthenticationToken authentication =
+                    new UsernamePasswordAuthenticationToken(
+                        usuario,
+                        null,
+                        Collections.emptyList()
+                    );
+
+                SecurityContextHolder.getContext()
+                        .setAuthentication(authentication);
             }
         }
 

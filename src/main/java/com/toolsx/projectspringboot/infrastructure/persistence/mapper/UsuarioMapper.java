@@ -12,33 +12,21 @@ import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioE
 public class UsuarioMapper {
 
     public Usuario toDomain(UsuarioEntity entity) {
-        if (entity == null) return null;
         Usuario usuario = new Usuario();
         usuario.setId(entity.getId());
         usuario.setUsuario(entity.getUsuario());
         usuario.setCorreo(entity.getCorreo());
         usuario.setPassword(entity.getPassword());
-        
-        if (entity.getRoles() != null) {
-            usuario.setRoles(entity.getRoles().stream()
-                    .map(RolEntity::getNombre)
-                    .collect(Collectors.toList()));
-        } else {
-            usuario.setRoles(new java.util.ArrayList<>());
-        }
         return usuario;
     }
 
-    public UsuarioEntity toEntity(Usuario domain) {
-        if (domain == null) return null;
-
+    public UsuarioEntity toEntity(Usuario usuario) {
         UsuarioEntity entity = new UsuarioEntity();
-        entity.setId(domain.getId());
-        entity.setUsuario(domain.getUsuario());
-        entity.setCorreo(domain.getCorreo());
-        entity.setPassword(domain.getPassword());
-
+        entity.setId(usuario.getId());
+        entity.setUsuario(usuario.getUsuario());
+        entity.setCorreo(usuario.getCorreo());
+        entity.setPassword(usuario.getPassword());
         return entity;
     }
-
 }
+

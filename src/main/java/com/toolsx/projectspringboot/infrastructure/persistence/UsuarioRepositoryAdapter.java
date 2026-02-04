@@ -11,46 +11,36 @@ import com.toolsx.projectspringboot.infrastructure.persistence.mapper.UsuarioMap
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.UsuarioJpaRepository;
 
 @Repository
-public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort{
-
-    private UsuarioMapper usuarioMapper;
+public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
 
     private final UsuarioJpaRepository usuarioJpaRepository;
+    private final UsuarioMapper usuarioMapper;
 
-    public UsuarioRepositoryAdapter(UsuarioJpaRepository usuarioJpaRepository, UsuarioMapper usuarioMapper) {
+    public UsuarioRepositoryAdapter(
+            UsuarioJpaRepository usuarioJpaRepository,
+            UsuarioMapper usuarioMapper
+    ) {
         this.usuarioJpaRepository = usuarioJpaRepository;
         this.usuarioMapper = usuarioMapper;
     }
 
     @Override
     public Usuario save(Usuario usuario) {
-        UsuarioEntity entity = new UsuarioEntity();
-        entity.setUsuario(usuario.getUsuario());
-        entity.setCorreo(usuario.getCorreo());
-        entity.setPassword(usuario.getPassword());
-
+        UsuarioEntity entity = usuarioMapper.toEntity(usuario);
         UsuarioEntity saved = usuarioJpaRepository.save(entity);
-
-        Usuario domain = new Usuario();
-        domain.setId(saved.getId());
-        domain.setUsuario(saved.getUsuario());
-        domain.setCorreo(saved.getCorreo());
-        domain.setPassword(saved.getPassword());
-
-        return domain;
+        return usuarioMapper.toDomain(saved);
     }
 
     @Override
     public Optional<Usuario> findByUsuario(String usuario) {
         return usuarioJpaRepository.findByUsuario(usuario)
-                .map(entity -> {
-                    Usuario u = new Usuario();
-                    u.setId(entity.getId());
-                    u.setUsuario(entity.getUsuario());
-                    u.setCorreo(entity.getCorreo());
-                    u.setPassword(entity.getPassword());
-                    return u;
-                });
+                .map(usuarioMapper::toDomain);
+    }
+
+    @Override
+    public Optional<Usuario> findByCorreo(String correo) {
+        return usuarioJpaRepository.findByCorreo(correo)
+                .map(usuarioMapper::toDomain);
     }
 
     @Override
@@ -62,15 +52,5 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort{
     public boolean existsByCorreo(String correo) {
         return usuarioJpaRepository.existsByCorreo(correo);
     }
-
-    @Override
-    public Optional<Usuario> findByCorreo(String correo) {
-        return usuarioJpaRepository.findByCorreo(correo)
-                .map(entity -> usuarioMapper.toDomain(entity));
-    }
-
-
-
-    
-
 }
+
