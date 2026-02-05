@@ -1,15 +1,13 @@
-# Archivo: src/main/resources/application-dev.yml
-
 spring:
   config:
     activate:
       on-profile: dev
 
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/toolsx_container?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DB_USERNAME:root}       # Usuario local MySQL
-    password: ${DB_PASSWORD:Kaneki#G1317}   # Contraseña local MySQL
+    url: jdbc:h2:file:./data/toolsx_container;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
     hikari:
       maximum-pool-size: 10
       minimum-idle: 5
@@ -19,22 +17,20 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update                  # Permite crear/actualizar tablas en dev
-    show-sql: true                       # Mostrar SQL en consola
+      ddl-auto: update   # Crea o actualiza tablas automáticamente
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
-        type:
-          preferred_uuid_jdbc_type: CHAR
-    defer-datasource-initialization: true  # Ejecuta data.sql después de crear esquema
+        dialect: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
 
   sql:
     init:
-      mode: never                       # Siempre ejecutar data.sql
+      mode: always        # Ejecuta data.sql si lo tienes
       data-locations: classpath:data.sql
 
-# Logging en desarrollo
+# Logging
 logging:
   level:
     com.toolsx.projectspringboot: DEBUG
