@@ -1,54 +1,62 @@
+
 :root {
-    --primary-orange: #ff6600;
-    --dark-pure: #000;
-    --dark-card: #121212;
-    --border-grey: #2a2a2a;
-    --text-main: #fff;
-    --text-muted: #a0a0a0;
-    --red-danger: #e74c3c;
+    --primary-orange: #ff7a00;
+    --dark-bg: #0f0f0f;
+    --sidebar-bg: #141414;
+    --card-bg: #1c1c1c;
+    --border-color: #2a2a2a;
+    --text-light: #ffffff;
+    --text-muted: #9a9a9a;
 }
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    background: var(--dark-pure);
-    color: var(--text-main);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
 }
-
-
 .app-container {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
 }
-
-
 .sidebar {
     width: 260px;
-    background: var(--dark-card);
-    padding: 25px 15px;
+    background: var(--sidebar-bg);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
-    height: 100%;
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
 }
+
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 40px;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .logo-icon {
     font-size: 26px;
-    color: white;
+    color: #fff;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo-text .orange {
+    color: var(--primary-orange);
+}
+
+.logo-text .white {
+    color: #fff;
 }
 
 
@@ -56,12 +64,17 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 15px;
-    color: var(--text-muted);
+    padding: 12px 14px;
+    color: var(--text-light);
     text-decoration: none;
+    font-size: 14px;
     border-radius: 8px;
-    margin-bottom: 8px;
-    transition: 0.3s;
+    margin-bottom: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar nav a i {
+    color: #fff;
 }
 
 .sidebar nav a:hover,
@@ -70,186 +83,130 @@ body {
     color: #000;
 }
 
+.sidebar nav a:hover i,
+.sidebar nav a.active i {
+    color: #000;
+}
+
+
 .logout {
-    background: transparent;
-    border: 1px solid var(--primary-orange);
-    color: var(--primary-orange);
-    padding: 10px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: #fff;
+    padding: 12px;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout:hover {
+    background: var(--primary-orange);
+    color: #000;
 }
 
 
 .main-content {
-    margin-left: 260px;
+    flex: 1;
     padding: 30px;
-    width: calc(100% - 260px);
+    overflow-y: auto;
 }
 
-
 .action-bar {
-    background: var(--dark-card);
-    padding: 20px;
-    border-radius: 12px;
     margin-bottom: 30px;
 }
 
 .action-bar h1 {
-    color: var(--primary-orange);
+    font-size: 26px;
+    margin-bottom: 6px;
 }
 
 .action-bar p {
     color: var(--text-muted);
+    font-size: 14px;
 }
-
 
 .top-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-bottom: 30px;
 }
 
 .stat-card {
-    background: var(--dark-card);
-    padding: 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    border-left: 5px solid var(--primary-orange);
+    padding: 20px;
 }
 
 .stat-card .label {
+    font-size: 13px;
     color: var(--text-muted);
 }
 
 .stat-card h2 {
-    font-size: 28px;
     margin-top: 10px;
-}
-
-
-.quick-actions {
-    background: var(--dark-card);
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-}
-
-.quick-actions h2 {
     color: var(--primary-orange);
-    margin-bottom: 20px;
-}
-
-.actions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.btn-action {
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-orange {
-    background: var(--primary-orange);
-    color: #000;
-}
-
-.btn-red {
-    background: var(--red-danger);
-    color: #fff;
-}
-
-.btn-grey {
-    background: #333;
-    color: #fff;
 }
 
 
 .data-section {
-    background: var(--dark-card);
-    padding: 25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
+    padding: 20px;
     margin-bottom: 30px;
-    overflow-x: auto;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
+}
+
+thead {
+    background: #111;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 th {
     color: var(--primary-orange);
-    padding: 15px;
-    border-bottom: 1px solid var(--border-grey);
 }
 
-td {
-    padding: 15px;
-    border-bottom: 1px solid var(--border-grey);
+tbody tr:hover {
+    background: #181818;
 }
 
 .badge {
-    padding: 5px 10px;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .badge.cliente {
-    background: #3498db;
+    background: #1f3cff;
+    color: #fff;
 }
 
 .badge.activo {
-    background: #2ecc71;
+    background: #1ecb4f;
+    color: #000;
 }
 
-
-.grid-bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.history-box,
-.supervision-box {
-    background: var(--dark-card);
-    padding: 20px;
-    border-radius: 12px;
-}
-
-
-.orange {
-    color: var(--primary-orange);
-}
-
-.white {
-    color: white;
-}
-
-@media (max-width: 1200px) {
-    .sidebar {
-        width: 220px;
-    }
-
-    .main-content {
-        margin-left: 220px;
-        width: calc(100% - 220px);
-    }
-
-    .top-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .actions-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.btn-delete:hover {
+    transform: scale(1.1);
 }

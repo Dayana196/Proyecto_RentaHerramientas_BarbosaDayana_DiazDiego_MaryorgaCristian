@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Proveedor | TOOLSX</title>
+
+    <link rel="stylesheet" href="/src/main/resources/static/css/registerproveedor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="top-header">
+            <div class="logo">
+                <i class="fas fa-screwdriver-wrench logo-icon"></i>
+                <h1>
+                    <span class="orange">T</span><span class="white">oolsx</span>
+                </h1>
+            </div>
+
+            <a href="/src/main/resources/templates/admin/dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Volver al panel
+            </a>
+        </header>
+
+        <!-- FORM CARD -->
+        <section class="form-card">
+            <h2><i class="fas fa-store"></i> Registrar Proveedor</h2>
+            <p>Formulario exclusivo para administradores</p>
+
+            <form>
+
+                <!-- DATOS DEL PROVEEDOR -->
+                <div class="section-title">
+                    <i class="fas fa-id-card"></i> Datos del proveedor
+                </div>
+
+                <div class="input-group">
+                    <label>Nombre del proveedor / Empresa</label>
+                    <input type="text" placeholder="Nombre o razón social" required>
+                </div>
+
+                <div class="input-group">
+                    <label>NIT / Documento</label>
+                    <input type="text" placeholder="Número de identificación" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="proveedor@email.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Teléfono</label>
+                    <input type="tel" placeholder="3001234567" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Dirección</label>
+                    <input type="text" placeholder="Dirección física" required>
+                </div>
+
+                <!-- DATOS DE ACCESO -->
+                <div class="section-title">
+                    <i class="fas fa-lock"></i> Datos de acceso
+                </div>
+
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" placeholder="usuario_proveedor" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="********" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Tipo de proveedor</label>
+                    <select required>
+                        <option value="">Seleccione tipo</option>
+                        <option value="EMPRESA">Empresa</option>
+                        <option value="INDEPENDIENTE">Independiente</option>
+                    </select>
+                </div>
+
+                <button class="btn-submit">
+                    <i class="fas fa-save"></i> Registrar Proveedor
+                </button>
+
+            </form>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

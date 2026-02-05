@@ -1,0 +1,134 @@
+:root {
+    --primary-orange: #ff6600;
+    --dark-pure: #000;
+    --dark-card: #121212;
+    --border-grey: #2a2a2a;
+    --text-main: #fff;
+    --text-muted: #a0a0a0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: var(--dark-pure);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 26px;
+    color: white;
+}
+
+.orange { color: var(--primary-orange); }
+.white { color: white; }
+
+.btn-back {
+    text-decoration: none;
+    color: var(--primary-orange);
+    border: 1px solid var(--primary-orange);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.form-card {
+    background: var(--dark-card);
+    padding: 35px;
+    border-radius: 14px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-card h2 {
+    color: var(--primary-orange);
+    margin-bottom: 5px;
+}
+
+.form-card p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+
+.section-title {
+    margin: 25px 0 15px;
+    font-weight: bold;
+    color: var(--primary-orange);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    color: white;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-orange);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .form-card {
+        padding: 25px;
+    }
+
+    .top-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
