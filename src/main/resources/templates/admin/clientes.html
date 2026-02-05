@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios | ToolsX</title>
+
+    <!-- FUENTE SOLO PARA EL LOGO -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+
+            <nav>
+                <a href="/src/main/resources/templates/admin/dashboard.html">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+
+                <a class="active" href="usuarios.html">
+                    <i class="fas fa-users"></i> Clientes
+                </a>
+
+                <a href="proveedores.html">
+                    <i class="fas fa-user-tie"></i> Proveedores
+                </a>
+
+                <a href="registerproveedor.html">
+                    <i class="fas fa-user-plus"></i> Registrar proveedor
+                </a>
+
+                <a href="equipos.html">
+                    <i class="fas fa-tools"></i> Equipos alquilados
+                </a>
+
+                <a href="historial.html">
+                    <i class="fas fa-history"></i> Historial
+                </a>
+
+                <a href="danos.html">
+                    <i class="fas fa-triangle-exclamation"></i> Daños
+                </a>
+
+                <a href="pagos.html">
+                    <i class="fas fa-credit-card"></i> Pagos
+                </a>
+
+                <a href="metricas.html">
+                    <i class="fas fa-chart-pie"></i> Métricas
+                </a>
+            </nav>
+        </div>
+
+
+
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <section class="action-bar">
+            <h1>Gestión de Usuarios</h1>
+            <p>Administra clientes, proveedores y su estado</p>
+        </section>
+
+        <section class="data-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Ana Torres</td>
+                        <td>ana@gmail.com</td>
+                        <td><span class="badge cliente">Cliente</span></td>
+                        <td><span class="badge activo">Activo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Carlos Ruiz</td>
+                        <td>carlos@proveedor.com</td>
+                        <td><span class="badge proveedor">Proveedor</span></td>
+                        <td><span class="badge inactivo">Inactivo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

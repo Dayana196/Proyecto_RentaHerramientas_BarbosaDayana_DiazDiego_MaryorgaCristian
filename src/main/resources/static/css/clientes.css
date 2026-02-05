@@ -1,0 +1,227 @@
+/* =========================
+   VARIABLES
+========================= */
+:root {
+    --primary-orange: #ff7a00;
+    --dark-bg: #0f0f0f;
+    --sidebar-bg: #141414;
+    --card-bg: #1c1c1c;
+    --border-color: #2a2a2a;
+    --text-light: #ffffff;
+    --text-muted: #9a9a9a;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    font-size: 26px;
+    color: #fff;
+}
+
+.logo-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo-text .orange {
+    color: var(--primary-orange);
+}
+
+.logo-text .white {
+    color: #fff;
+}
+
+/* NAV */
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    transition: background 0.3s;
+}
+
+.sidebar nav a i {
+    color: #fff;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: var(--primary-orange);
+    color: #000;
+}
+
+.sidebar nav a:hover i,
+.sidebar nav a.active i {
+    color: #000;
+}
+
+/* LOGOUT */
+.logout {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background: var(--primary-orange);
+    color: #000;
+}
+
+/* =========================
+   MAIN
+========================= */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.action-bar h1 {
+    font-size: 26px;
+}
+
+.action-bar p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.data-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* =========================
+   TABLE
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    color: var(--primary-orange);
+    text-align: left;
+}
+
+tbody tr:hover {
+    background: #181818;
+}
+
+/* =========================
+   BADGES
+========================= */
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge.cliente {
+    background: #1f3cff;
+}
+
+.badge.proveedor {
+    background: #8e44ad;
+}
+
+.badge.activo {
+    background: #1ecb4f;
+    color: #000;
+}
+
+.badge.inactivo {
+    background: #7f8c8d;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-edit {
+    color: var(--primary-orange);
+}
+
+.btn-delete {
+    color: #ff4d4d;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+    transform: scale(1.15);
+}
