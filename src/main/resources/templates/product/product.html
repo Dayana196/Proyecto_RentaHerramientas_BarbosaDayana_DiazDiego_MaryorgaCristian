@@ -33,9 +33,18 @@
 
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/src/main/resources/templates/index.html">Home</a></li>
                     <li><a href="#">Products</a></li>
-                    <li><a href="#">Category</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#" class="category-btn">Category <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 5px;"></i></a>
+                        <div class="category-submenu">
+                            <a href="#" onclick="filtrarPor('all')">Todas las Herramientas</a>
+                            <a href="#" onclick="filtrarPor('electricas')">Eléctricas</a>
+                            <a href="#" onclick="filtrarPor('manuales')">Manuales</a>
+                            <a href="#" onclick="filtrarPor('construccion')">Construcción</a>
+                            <a href="#" onclick="filtrarPor('seguridad')">Equipo de Seguridad</a>
+                        </div>
+                    </li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
@@ -89,7 +98,7 @@
     <section class="products" id="products">
         <div class="container">
             <div class="product-grid">
-                <div class="product-card">
+                <div class="product-card" data-category="electricas">
                     <div class="product-img">
                         <img src="FOTOO.png" alt="tool">
 
@@ -116,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="manuales">
                     <div class="product-img">
                         <img src="FOTOO.png" alt="tool">
 
@@ -143,7 +152,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="construccion">
                     <div class="product-img">
                         <img src="FOTOO.png" alt="tool">
 
@@ -170,7 +179,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="seguridad">
                     <div class="product-img">
                         <img src="FOTOO.png" alt="tool">
 
@@ -414,6 +423,48 @@
         </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About BrewHaven</h3>
+                    <p style="color: rgb(255, 255, 255); margin-bottom: 20px;">Premium hardware providers dedicated to durability, precision and the perfect build</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Power Tools</a></li>
+                        <li><a href="#">Hand Tools</a></li>
+                        <li><a href="#">Safety Gear</a></li>
+                        <li><a href="#">Industrial Supply</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-location-dot"></i> Direccion, de la empresa etc</li>
+                        <li><i class="fa-solid fa-phone"></i>(+57) 123-4567891</li>
+                        <li><i class="fa-solid fa-envelope"></i>toolsx@hotmail.com.co</li>
+                        <li><i class="fa-solid fa-clock"></i>Mon-Sat: 6am - 8pm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 Toolsx Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
 
     <script src="product.js"></script>
 </body>
