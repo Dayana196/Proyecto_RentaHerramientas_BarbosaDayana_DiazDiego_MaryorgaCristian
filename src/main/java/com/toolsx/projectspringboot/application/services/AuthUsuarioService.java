@@ -1,13 +1,15 @@
 package com.toolsx.projectspringboot.application.services;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.domain.ports.UsuarioRepositoryPort;
-import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.LoginRequest;
+import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.UsuarioRequest;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.RolEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.mapper.UsuarioMapper;
@@ -50,31 +52,37 @@ public class AuthUsuarioService {
     }
 
 
-    public Usuario registrar(Usuario usuarioDTO) {
-            // 1. Crear la Entidad de Usuario
-            UsuarioEntity nuevaEntidad = new UsuarioEntity();
-            nuevaEntidad.setUsuario(usuarioDTO.getUsuario());
-            nuevaEntidad.setCorreo(usuarioDTO.getCorreo());
-            nuevaEntidad.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
+    public Usuario registrar(UsuarioRequest usuarioRequest) {
+        // 1. Convertir roles a entidades RolEntity
+        Set<RolEntity> roles = usuarioRequest.getRoles().stream()
+            .map(nombre -> rolRepository.findByNombre(nombre)
+                .orElseThrow(() -> new RuntimeException("Rol no encontrado: " + nombre))
+            )
+            .collect(Collectors.toSet());
 
+        // 2. Crear la entidad UsuarioEntity
+        UsuarioEntity usuarioEntity = new UsuarioEntity();
+        usuarioEntity.setUsuario(usuarioRequest.getUsuario());
+        usuarioEntity.setCorreo(usuarioRequest.getCorreo());
+        usuarioEntity.setPassword(passwordEncoder.encode(usuarioRequest.getPassword()));
+        usuarioEntity.setRoles(roles);
 
-            // 2. Mapear el rol manual a una Entidad de Rol real
-            Set<RolEntity> rolesAsignados = new HashSet<>();
-            
-            for (String nombreRol : usuarioDTO.getRoles()) {
-                // Buscamos el rol en la DB por su nombre (ADMIN, PROVEEDOR, etc.)
-                RolEntity rolEncontrado = rolRepository.findByNombre(nombreRol.toUpperCase())
-                    .orElseThrow(() -> new RuntimeException("El rol " + nombreRol + " no existe en la DB"));
-                
-                rolesAsignados.add(rolEncontrado);
-            }
+        // 3. Guardar en base de datos
+        usuarioEntity = usuarioRepository.save(usuarioEntity);
 
-            nuevaEntidad.setRoles(rolesAsignados);
+        // 4. Mapear a dominio
+        List<String> nombresRoles = usuarioEntity.getRoles()
+            .stream()
+            .map(RolEntity::getNombre)
+            .toList();
 
-            // 3. Guardar (Esto llenará automáticamente la tabla intermedia usuarios_roles)
-            UsuarioEntity guardado = usuarioRepository.save(nuevaEntidad);
-            
-            return usuarioMapper.toDomain(guardado);
-        }
+        return new Usuario(
+            usuarioEntity.getId(),
+            usuarioEntity.getUsuario(),
+            usuarioEntity.getCorreo(),
+            null, // nunca devolvemos la contraseña
+            nombresRoles
+        );
     }
+}
 

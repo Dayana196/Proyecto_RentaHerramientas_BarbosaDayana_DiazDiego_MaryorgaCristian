@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.toolsx.projectspringboot.application.services.AuthUsuarioService;
 import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.LoginRequest;
+import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.UsuarioRequest;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -50,11 +51,11 @@ public class AuthRestController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Usuario usuario) {
+    public ResponseEntity<?> register(@RequestBody UsuarioRequest usuarioRequest) {
         try {
-            System.out.println("DEBUG -> Petición de registro recibida para: " + usuario.getUsuario());
+            System.out.println("DEBUG -> Petición de registro recibida para: " + usuarioRequest.getUsuario());
             
-            Usuario guardado = authService.registrar(usuario);
+            Usuario guardado = authService.registrar(usuarioRequest);
             return ResponseEntity.ok(guardado);
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error interno: " + e.getMessage());

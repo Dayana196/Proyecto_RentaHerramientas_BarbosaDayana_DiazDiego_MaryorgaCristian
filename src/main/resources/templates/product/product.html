@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <head>
+    </head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <div class="logo-text">T<span>OOLSX</span></div>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Category</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+
+            <div class="nav-buttons">
+                <div class="btn-wrapper">
+                    <a href="/src/main/resources/templates/cliente/login.html" class="btn btn-secondaryy">
+                        Sign up
+                    </a>
+
+                    <div class="submenu">
+                        <a href="/src/main/resources/templates/cliente/register.html">Cliente</a>
+                        <a href="/src/main/resources/templates/admin/register.html">Administrador</a>
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <a href="#" class="btn btn-primaryy">
+                        Log in
+                    </a>
+
+                    <div class="submenu">
+                        <a href="/src/main/resources/templates/cliente/login.html">cliente</a>
+                        <a href="/src/main/resources/templates/admin/login.html">Administrador</a>
+                    </div>
+                </div>
+                <div class="cart-wrapper">
+                    <div class="cart-icon" id="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+
+                    <div class="cart-dropdown">
+                        <h4 class="cart-title">Tu Carrito</h4>
+                        <div id="cart-items">
+                            <p class="empty-msg">No hay productos</p>
+                        </div>
+                        <div class="cart-footer-total">
+                            <span>Total:</span>
+                            <span id="cart-total-amount">$0.00</span>
+                        </div>
+                        <button class="btn-checkout">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="logout()">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-tag">NEW</div>
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="FOTOO.png" alt="tool">
+
+                        <div class="product-overlay">
+                            <div class="overlay-details">
+                                <span>DISPONIBLE</span>
+                                <p>Acero reforzado / Mango de goma antideslizante</p> <button class="add-to-cart">
+                                    <i class="fa-solid fa-cart-plus"></i> AGREGAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h3 class="product-title">martillo</h3>
+                        <p class="product-desc">Herramienta de alta resistencia <br> ideal para construcción.</p>
+
+                        <div class="product-footer">
+                            <div class="product-price">$17.99</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i> 5.0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <script src="product.js"></script>
+</body>
+
+</html>
