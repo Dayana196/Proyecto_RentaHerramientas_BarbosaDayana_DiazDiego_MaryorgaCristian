@@ -3,25 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <head>
-    <script>
-        const token = localStorage.getItem("token");
-        console.log("TOKEN EN INDEX:", token);
-    </script>
-    <script>
-        function logout() {
-            localStorage.removeItem("token"); // 🔥 borrar token
-            window.location.replace(
-            "/src/main/resources/templates/cliente/login.html"
-            );
-        }
-    </script>
-    <script>
-        if (!localStorage.getItem("token")) {
-            window.location.replace(
-            "/src/main/resources/templates/cliente/login.html"
-            );
-        }
-    </script>
 </head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
