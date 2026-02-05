@@ -1,12 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/proveedores.css">
+    <title>Admin | Proveedores - ToolsX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/dashboard.css">
 </head>
+
 <body>
-    
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+
+            <nav>
+                <a href="/src/main/resources/templates/admin/dashboard.html">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+
+                <a href="/src/main/resources/templates/admin/clientes.html">
+                    <i class="fas fa-users"></i> Clientes
+                </a>
+
+                <a class="active" href="proveedores.html">
+                    <i class="fas fa-user-tie"></i> Proveedores
+                </a>
+
+                <a href="registerproveedor.html">
+                    <i class="fas fa-user-plus"></i> Registrar proveedor
+                </a>
+
+                <a href="equipos.html">
+                    <i class="fas fa-tools"></i> Equipos alquilados
+                </a>
+
+                <a href="historial.html">
+                    <i class="fas fa-history"></i> Historial
+                </a>
+
+                <a href="danos.html">
+                    <i class="fas fa-triangle-exclamation"></i> Daños
+                </a>
+
+                <a href="pagos.html">
+                    <i class="fas fa-credit-card"></i> Pagos
+                </a>
+
+                <a href="metricas.html">
+                    <i class="fas fa-chart-pie"></i> Métricas
+                </a>
+            </nav>
+        </div>
+
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+
+    <main class="main-content">
+
+        <section class="action-bar">
+            <h1>Proveedores Registrados</h1>
+            <p>Listado de proveedores activos en la plataforma</p>
+        </section>
+
+        <section class="data-section">
+            <h2 style="color: var(--primary-orange); margin-bottom: 15px;">
+                Gestión de Proveedores
+            </h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Sebastián Jaimes</td>
+                        <td>Herramax</td>
+                        <td><span class="badge activo">Activo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Laura Vanessa</td>
+                        <td>ToolRent</td>
+                        <td><span class="badge activo">Activo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Andrés Ruiz</td>
+                        <td>ProTools</td>
+                        <td><span class="badge activo">Activo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Sofía Calderón</td>
+                        <td>EquipRent</td>
+                        <td><span class="badge inactivo">Inactivo</span></td>
+                        <td class="actions">
+                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
 </body>
 </html>
