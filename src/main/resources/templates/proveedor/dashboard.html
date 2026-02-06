@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedor | ToolsX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/dashboardproveedor.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+
+            <nav>
+                <a class="active" href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="herramientas.html"><i class="fas fa-tools"></i> Mis Herramientas</a>
+                <a href="reservas.html"><i class="fas fa-calendar-check"></i> Reservas</a>
+                <a href="facturacion.html"><i class="fas fa-file-invoice"></i> Facturación</a>
+                <a href="reportes.html"><i class="fas fa-chart-pie"></i> Reportes</a>
+            </nav>
+        </div>
+
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+    <main class="main-content">
+
+        <section class="action-bar">
+            <h1>Panel del Proveedor</h1>
+            <p>Gestión de herramientas y alquileres</p>
+        </section>
+
+        <section class="top-stats">
+            <div class="stat-card">
+                <span class="label">Herramientas Registradas</span>
+                <h2>12</h2>
+            </div>
+            <div class="stat-card">
+                <span class="label">Disponibles</span>
+                <h2>8</h2>
+            </div>
+            <div class="stat-card">
+                <span class="label">Reservas Activas</span>
+                <h2>4</h2>
+            </div>
+            <div class="stat-card">
+                <span class="label">Ingresos del Mes</span>
+                <h2>$3.200.000</h2>
+            </div>
+        </section>
+
+
+        <section class="data-section">
+            <h2 class="section-title">Mis Herramientas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio/Día</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Taladro Industrial</td>
+                        <td>$50.000</td>
+                        <td><span class="badge activo">Disponible</span></td>
+                        <td>
+                            <button class="btn-delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section class="data-section">
+            <h2 class="section-title">Reservas Recientes</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Herramienta</th>
+                        <th>Fechas</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Carlos Pérez</td>
+                        <td>Compresor</td>
+                        <td>10 - 15 Feb</td>
+                        <td><span class="badge cliente">Activa</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
