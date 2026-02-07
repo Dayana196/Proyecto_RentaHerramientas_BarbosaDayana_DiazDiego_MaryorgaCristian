@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facturación | ToolsX</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/main/resources/static/css/facturacionproveedor.css">
+</head>
+
+<body>
+<div class="app-container">
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+        <span class="logo-text">
+          <span class="orange">T</span><span class="white">OOLSX</span>
+        </span>
+      </div>
+
+      <nav>
+        <a href="/src/main/resources/templates/proveedor/dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="/src/main/resources/templates/proveedor/herramientas.html"><i class="fas fa-tools"></i> Mis Herramientas</a>
+        <a href="/src/main/resources/templates/proveedor/reservas.html"><i class="fas fa-calendar-check"></i> Reservas</a>
+        <a class="active" href="#"><i class="fas fa-file-invoice"></i> Facturación</a>
+        <a href="/src/main/resources/templates/proveedor/reportesdaños.html"><i class="fas fa-chart-pie"></i> Reportes</a>
+      </nav>
+    </div>
+
+    <button class="logout">Cerrar sesión</button>
+  </aside>
+
+  <main class="main-content">
+
+    <section class="action-bar">
+      <h1>Facturación y Pagos</h1>
+      <p>Gestiona tus ingresos y documentos fiscales</p>
+    </section>
+
+    <section class="data-section">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID Factura</th>
+              <th>Cliente</th>
+              <th>Reserva</th>
+              <th>Fecha</th>
+              <th>Monto</th>
+              <th>Estado</th>
+              <th>Documento</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>FAC-001</td>
+              <td>Dayana Barbosa</td>
+              <td>#1</td>
+              <td>05/11/2023</td>
+              <td>$150.000</td>
+              <td><span class="badge paid">Pagado</span></td>
+              <td class="actions">
+                <button class="btn-action download" title="Descargar PDF"><i class="fas fa-file-pdf"></i></button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>FAC-002</td>
+              <td>Diego Diaz</td>
+              <td>#2</td>
+              <td>03/11/2023</td>
+              <td>$80.000</td>
+              <td><span class="badge pending">Pendiente</span></td>
+              <td class="actions">
+                <button class="btn-action generate" title="Generar Factura"><i class="fas fa-file-invoice-dollar"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

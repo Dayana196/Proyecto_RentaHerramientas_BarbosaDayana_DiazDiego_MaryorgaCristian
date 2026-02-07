@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 :root {
     --primary-orange: #ff6600;
     --dark-pure: #000;
@@ -6,7 +9,6 @@
     --text-main: #fff;
     --text-muted: #a0a0a0;
 }
-
 
 * {
     margin: 0;
@@ -21,13 +23,11 @@ body {
     min-height: 100vh;
 }
 
-
 .container {
     max-width: 1200px;
     margin: auto;
     padding: 30px;
 }
-
 
 .top-header {
     display: flex;
@@ -40,6 +40,9 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .logo-icon {
@@ -56,6 +59,12 @@ body {
     border: 1px solid var(--primary-orange);
     padding: 10px 15px;
     border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: var(--primary-orange);
+    color: #000;
 }
 
 .form-card {
@@ -64,18 +73,21 @@ body {
     border-radius: 14px;
     max-width: 600px;
     margin: auto;
+    border: 1px solid var(--border-grey);
 }
 
 .form-card h2 {
     color: var(--primary-orange);
     margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 .form-card p {
     color: var(--text-muted);
     margin-bottom: 25px;
+    font-size: 14px;
 }
-
 
 .section-title {
     margin: 25px 0 15px;
@@ -84,8 +96,9 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
 }
-
 
 .input-group {
     margin-bottom: 18px;
@@ -105,6 +118,12 @@ input, select {
     border: 1px solid var(--border-grey);
     border-radius: 6px;
     color: white;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-orange);
 }
 
 .btn-submit {
@@ -116,6 +135,13 @@ input, select {
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
+    color: #000;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
 }
 
 @media (max-width: 768px) {

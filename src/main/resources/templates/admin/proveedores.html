@@ -2,20 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Admin | Proveedores - ToolsX</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores | ToolsX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/dashboard.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
 </head>
-
 <body>
-
 <div class="app-container">
-
     <aside class="sidebar">
         <div>
             <div class="logo">
@@ -24,117 +20,166 @@
                     <span class="orange">T</span><span class="white">OOLSX</span>
                 </span>
             </div>
-
             <nav>
                 <a href="/src/main/resources/templates/admin/dashboard.html">
                     <i class="fas fa-chart-line"></i> Dashboard
                 </a>
-
                 <a href="/src/main/resources/templates/admin/clientes.html">
                     <i class="fas fa-users"></i> Clientes
                 </a>
-
                 <a class="active" href="proveedores.html">
                     <i class="fas fa-user-tie"></i> Proveedores
                 </a>
-
                 <a href="registerproveedor.html">
                     <i class="fas fa-user-plus"></i> Registrar proveedor
                 </a>
-
-                <a href="equipos.html">
-                    <i class="fas fa-tools"></i> Equipos alquilados
+                <a href="/src/main/resources/templates/admin/equiposalquilados.html">
+                    <i class="fas fa-history"></i> Equipos Alquilados
                 </a>
-
-                <a href="historial.html">
-                    <i class="fas fa-history"></i> Historial
-                </a>
-
                 <a href="danos.html">
                     <i class="fas fa-triangle-exclamation"></i> Daños
                 </a>
-
                 <a href="pagos.html">
                     <i class="fas fa-credit-card"></i> Pagos
                 </a>
-
                 <a href="metricas.html">
                     <i class="fas fa-chart-pie"></i> Métricas
                 </a>
             </nav>
         </div>
-
         <button class="logout">Cerrar sesión</button>
     </aside>
 
     <main class="main-content">
-
         <section class="action-bar">
-            <h1>Proveedores Registrados</h1>
-            <p>Listado de proveedores activos en la plataforma</p>
+            <h1>Gestión de Proveedores</h1>
+            <p>Administra proveedores y su estado</p>
+        </section>
+
+        <section class="user-stats">
+            <div class="stat-card">
+                <i class="fas fa-user-tie"></i>
+                <div class="stat-info">
+                    <span class="label">Total Proveedores</span>
+                    <h2>4</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-info">
+                    <span class="label">Activos</span>
+                    <h2>3</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-times-circle"></i>
+                <div class="stat-info">
+                    <span class="label">Inactivos</span>
+                    <h2>1</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-tools">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchSupplier" placeholder="Buscar por nombre o empresa...">
+            </div>
+            
+            <div class="filter-group">
+                <select id="filterStatus">
+                    <option value="">Todos los Estados</option>
+                    <option value="activo">Activos</option>
+                    <option value="inactivo">Inactivos</option>
+                </select>
+                <a href="registerproveedor.html" class="btn-add">
+                    <i class="fas fa-plus"></i> Nuevo
+                </a>
+            </div>
         </section>
 
         <section class="data-section">
-            <h2 style="color: var(--primary-orange); margin-bottom: 15px;">
-                Gestión de Proveedores
-            </h2>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Empresa</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Sebastián Jaimes</td>
-                        <td>Herramax</td>
-                        <td><span class="badge activo">Activo</span></td>
-                        <td class="actions">
-                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Laura Vanessa</td>
-                        <td>ToolRent</td>
-                        <td><span class="badge activo">Activo</span></td>
-                        <td class="actions">
-                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Andrés Ruiz</td>
-                        <td>ProTools</td>
-                        <td><span class="badge activo">Activo</span></td>
-                        <td class="actions">
-                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Sofía Calderón</td>
-                        <td>EquipRent</td>
-                        <td><span class="badge inactivo">Inactivo</span></td>
-                        <td class="actions">
-                            <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Empresa</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sebastián Jaimes</td>
+                            <td>Herramax</td>
+                            <td><span class="badge activo">Activo</span></td>
+                            <td class="actions">
+                                <button class="btn-edit" title="Editar"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Laura Vanessa</td>
+                            <td>ToolRent</td>
+                            <td><span class="badge activo">Activo</span></td>
+                            <td class="actions">
+                                <button class="btn-edit" title="Editar"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Andrés Ruiz</td>
+                            <td>ProTools</td>
+                            <td><span class="badge activo">Activo</span></td>
+                            <td class="actions">
+                                <button class="btn-edit" title="Editar"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sofía Calderón</td>
+                            <td>EquipRent</td>
+                            <td><span class="badge inactivo">Inactivo</span></td>
+                            <td class="actions">
+                                <button class="btn-edit" title="Editar"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
-
     </main>
 </div>
 
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Editar Proveedor</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <form id="editForm">
+            <div class="input-group">
+                <label>Nombre del Proveedor</label>
+                <input type="text" id="editName" name="name" required>
+            </div>
+            <div class="input-group">
+                <label>Nombre de la Empresa</label>
+                <input type="text" id="editCompany" name="company" required>
+            </div>
+            <div class="input-group">
+                <label>Estado</label>
+                <select id="editStatus">
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+<script src="/src/main/resources/static/js/admin/editarproveedor.js"></script>
 </body>
 </html>

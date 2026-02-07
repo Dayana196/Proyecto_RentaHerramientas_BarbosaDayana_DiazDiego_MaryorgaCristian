@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | ToolsX</title>
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/src/main/resources/static/css/dashboard.css">
 </head>
-
 <body>
-
     <div class="app-container">
         <aside class="sidebar">
             <div>
@@ -25,35 +20,26 @@
                         <span class="orange">T</span><span class="white">OOLSX</span>
                     </span>
                 </div>
-
                 <nav>
                     <a class="active" href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
                     <a href="/src/main/resources/templates/admin/clientes.html"><i class="fas fa-users"></i> Clientes</a>
-                    <a href="#"><i class="fas fa-user-tie"></i> Proveedores</a>
-
-
-                    <a href="registerproveedor.html">
-                        <i class="fas fa-user-plus"></i> Registrar proveedor
-                    </a>
-
-                    <a href="#"><i class="fas fa-tools"></i> Equipos alquilados</a>
-                    <a href="#"><i class="fas fa-history"></i> Historial</a>
+                    <a href="/src/main/resources/templates/admin/proveedores.html"><i class="fas fa-user-tie"></i> Proveedores</a>
+                    <a href="registerproveedor.html"><i class="fas fa-user-plus"></i> Registrar proveedor</a>
+                    <a href="/src/main/resources/templates/admin/equiposalquilados.html"><i class="fas fa-history"></i> Equipos Alquilados</a>
                     <a href="#"><i class="fas fa-triangle-exclamation"></i> Daños</a>
                     <a href="#"><i class="fas fa-credit-card"></i> Pagos</a>
                     <a href="#"><i class="fas fa-chart-pie"></i> Métricas</a>
                 </nav>
             </div>
-
             <button class="logout">Cerrar sesión</button>
         </aside>
-
-
+        
         <main class="main-content">
-
             <section class="action-bar">
                 <h1>Panel de Administración</h1>
                 <p>Control total de la plataforma ToolsX</p>
             </section>
+            
             <section class="top-stats">
                 <div class="stat-card">
                     <span class="label">Ingresos Mensuales</span>
@@ -67,40 +53,81 @@
                     <span class="label">Reportes de Daños</span>
                     <h2>4</h2>
                 </div>
+                <div class="stat-card">
+                    <span class="label">Nuevos Usuarios</span>
+                    <h2>15</h2>
+                </div>
+            </section>
+            
+            <section class="dashboard-grid">
+                <div class="data-section">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 15px;">Alertas Importantes</h2>
+                    <div class="alert-list">
+                        <div class="alert-item warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <p>El taladro industrial #4 necesita mantenimiento.</p>
+                                <small>Hace 2 horas</small>
+                            </div>
+                        </div>
+                        <div class="alert-item danger">
+                            <i class="fas fa-times-circle"></i>
+                            <div>
+                                <p>Daño reportado: Sierra circular - ID 102</p>
+                                <small>Hace 5 horas</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-section">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 15px;">Actividad Reciente</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Acción</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ana Torres</td>
+                                <td>Alquiló Taladro #4</td>
+                                <td>10:30 AM</td>
+                            </tr>
+                            <tr>
+                                <td>Carlos Ruiz</td>
+                                <td>Actualizó perfil</td>
+                                <td>09:15 AM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section class="data-section">
-                <h2 style="color: var(--primary-orange); margin-bottom: 15px;">
-                    Gestión de Usuarios
-                </h2>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                            <th>Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Ana Torres</td>
-                            <td><span class="badge cliente">Cliente</span></td>
-                            <td><span class="badge activo">Activo</span></td>
-                            <td>
-                                <button class="btn-delete">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="section-header">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 15px;">Inventario de Herramientas</h2>
+                    
+                    <div class="filter-container">
+                        <i class="fas fa-filter filter-icon"></i>
+                        <select id="category-filter">
+                            <option value="ALL">Todas</option>
+                            <option value="ELÉCTRICAS">Eléctricas</option>
+                            <option value="MANUALES">Manuales</option>
+                            <option value="CONSTRUCCIÓN">Construcción</option>
+                            <option value="SEGURIDAD">Seguridad</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="tools-grid" class="tools-grid">
+                    </div>
             </section>
 
         </main>
     </div>
-
+    
+    <script src="/src/main/resources/static/js/admin/herramientas.js"></script>
 </body>
-
 </html>

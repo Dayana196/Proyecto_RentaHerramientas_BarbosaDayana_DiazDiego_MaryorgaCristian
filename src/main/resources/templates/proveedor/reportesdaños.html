@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devoluciones y Daños | ToolsX</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/main/resources/static/css/reportesdaños.css">
+</head>
+
+<body>
+<div class="app-container">
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+        <span class="logo-text">
+          <span class="orange">T</span><span class="white">OOLSX</span>
+        </span>
+      </div>
+
+      <nav>
+        <a href="/src/main/resources/templates/proveedor/dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="/src/main/resources/templates/proveedor/herramientas.html"><i class="fas fa-tools"></i> Mis Herramientas</a>
+        <a href="/src/main/resources/templates/proveedor/reservas.html"><i class="fas fa-calendar-check"></i> Reservas</a>
+        <a href="/src/main/resources/templates/proveedor/facturacion.html"><i class="fas fa-file-invoice"></i> Facturación</a>
+        <a class="active" href="#"><i class="fas fa-undo-alt"></i> Devoluciones</a>
+      </nav>
+    </div>
+
+    <button class="logout">Cerrar sesión</button>
+  </aside>
+
+  <main class="main-content">
+
+    <section class="action-bar">
+      <h1>Devoluciones y Daños</h1>
+      <p>Confirma la recepción de herramientas y reporta incidencias</p>
+    </section>
+
+    <section class="data-section">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID Reserva</th>
+              <th>Cliente</th>
+              <th>Herramienta</th>
+              <th>Fecha Limite</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>#1</td>
+              <td>Dayana Barbosaz</td>
+              <td>Pulidora</td>
+              <td>04/11/2023</td>
+              <td><span class="badge returned">Por confirmar</span></td>
+              <td class="actions">
+                <button class="btn-action check" title="Confirmar Devolución"><i class="fas fa-check-circle"></i></button>
+                <button class="btn-action report" title="Reportar Daño"><i class="fas fa-exclamation-triangle"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

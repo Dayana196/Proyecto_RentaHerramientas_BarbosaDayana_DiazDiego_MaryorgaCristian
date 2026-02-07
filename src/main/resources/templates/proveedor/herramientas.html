@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Herramientas | ToolsX</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/src/main/resources/static/css/herramientas.css">
+</head>
+
+<body>
+<div class="app-container">
+
+  <aside class="sidebar">
+    <div>
+      <div class="logo">
+        <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+        <span class="logo-text">
+          <span class="orange">T</span><span class="white">OOLSX</span>
+        </span>
+      </div>
+
+      <nav>
+        <a href="/src/main/resources/templates/proveedor/dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a class="active" href="#"><i class="fas fa-tools"></i> Mis Herramientas</a>
+        <a href="/src/main/resources/templates/proveedor/reservas.html"><i class="fas fa-calendar-check"></i> Reservas</a>
+        <a href="/src/main/resources/templates/proveedor/facturacion.html"><i class="fas fa-file-invoice"></i> Facturación</a>
+        <a href="/src/main/resources/templates/proveedor/reportesdaños.html"><i class="fas fa-chart-pie"></i> Reportes</a>
+      </nav>
+    </div>
+
+    <button class="logout">Cerrar sesión</button>
+  </aside>
+
+  <main class="main-content">
+
+    <section class="action-bar">
+      <h1>Gestión de Herramientas</h1>
+      <p>Administra tus herramientas registradas</p>
+    </section>
+
+    <section class="data-section">
+      <div class="tools-header">
+        <h2>Mis Herramientas</h2>
+        <button class="btn-add" onclick="document.querySelector('.modal').style.display = 'flex'">
+            <i class="fas fa-plus"></i> Agregar herramienta
+        </button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio/Día</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><img src="/src/main/resources/templates/proveedor/img/tt.jpg" class="tool-img" alt="Taladro"></td>
+              <td>Taladro Industrial</td>
+              <td>$50.000</td>
+              <td><span class="status disponible">Disponible</span></td>
+              <td class="actions">
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+
+            <tr>
+              <td><img src="img/pulidora.jpg" class="tool-img" alt="Pulidora"></td>
+              <td>Pulidora</td>
+              <td>$40.000</td>
+              <td><span class="status alquilada">Alquilada</span></td>
+              <td class="actions">
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="modal">
+      <div class="modal-content">
+        <h3>Agregar herramienta</h3>
+
+        <form class="tool-form">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Ej. Taladro Industrial">
+          </div>
+
+          <div class="form-group">
+            <label>Precio por día</label>
+            <input type="number" placeholder="Ej. 50000">
+          </div>
+
+          <div class="form-group">
+            <label>Imagen</label>
+            <input type="file">
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cancel" onclick="document.querySelector('.modal').style.display = 'none'">Cancelar</button>
+            <button type="submit" class="btn-save">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>

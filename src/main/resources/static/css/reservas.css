@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
@@ -28,6 +27,7 @@ body {
     height: 100vh;
 }
 
+
 .sidebar {
     width: 260px;
     background: var(--sidebar-bg);
@@ -53,7 +53,6 @@ body {
 .logo-text {
     font-size: 22px;
     font-weight: 700;
-
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -101,12 +100,14 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    width: 100%;
 }
 
 .logout:hover {
     background: var(--primary-orange);
     color: #000;
 }
+
 
 .main-content {
     flex: 1;
@@ -119,57 +120,24 @@ body {
 }
 
 .action-bar h1 {
-    font-size: 26px;
-    margin-bottom: 6px;
-
+    font-size: 32px;
     font-family: 'Orbitron', sans-serif;
+    color: #fff;
     letter-spacing: 1px;
 }
 
 .action-bar p {
     color: var(--text-muted);
     font-size: 14px;
+    margin-top: 5px;
 }
 
-.top-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.stat-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.stat-card .label {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-.stat-card h2 {
-    margin-top: 10px;
-    color: var(--primary-orange);
-
-    font-family: 'Orbitron', sans-serif;
-}
 
 .data-section {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
-    margin-bottom: 30px;
-}
-
-.section-title {
-    color: var(--primary-orange);
-    margin-bottom: 15px;
-
-    font-family: 'Orbitron', sans-serif;
 }
 
 table {
@@ -182,7 +150,7 @@ thead {
 }
 
 th, td {
-    padding: 12px;
+    padding: 18px;
     text-align: left;
     font-size: 13px;
     border-bottom: 1px solid var(--border-color);
@@ -190,37 +158,80 @@ th, td {
 
 th {
     color: var(--primary-orange);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 tbody tr:hover {
     background: #181818;
 }
 
+
 .badge {
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 600;
 }
 
-.badge.cliente {
-    background: #1f3cff;
-    color: #fff;
+.badge.pending {
+    background-color: rgba(255, 122, 0, 0.2);
+    color: var(--primary-orange);
+    border: 1px solid var(--primary-orange);
 }
 
-.badge.activo {
-    background: #1ecb4f;
+.badge.accepted {
+    background-color: rgba(30, 203, 79, 0.2);
+    color: #1ecb4f;
+    border: 1px solid #1ecb4f;
+}
+
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.btn-action.accept {
+    background-color: rgba(30, 203, 79, 0.2);
+    color: #1ecb4f;
+    border: 1px solid #1ecb4f;
+}
+
+.btn-action.accept:hover {
+    background-color: #1ecb4f;
     color: #000;
 }
 
-.btn-delete {
-    background: none;
-    border: none;
+.btn-action.reject {
+    background-color: rgba(255, 77, 77, 0.2);
     color: #ff4d4d;
-    font-size: 16px;
-    cursor: pointer;
+    border: 1px solid #ff4d4d;
 }
 
-.btn-delete:hover {
-    transform: scale(1.1);
+.btn-action.reject:hover {
+    background-color: #ff4d4d;
+    color: #000;
+}
+
+.btn-action.confirm {
+    background-color: rgba(65, 105, 225, 0.2);
+    color: #4169e1;
+    border: 1px solid #4169e1;
+}
+
+.btn-action.confirm:hover {
+    background-color: #4169e1;
+    color: #fff;
 }

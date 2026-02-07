@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial | ToolsX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+            <nav>
+                <a href="/src/main/resources/templates/admin/dashboard.html">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="/src/main/resources/templates/admin/clientes.html">
+                    <i class="fas fa-users"></i> Clientes
+                </a>
+                <a href="proveedores.html">
+                    <i class="fas fa-user-tie"></i> Proveedores
+                </a>
+                <a href="registerproveedor.html">
+                    <i class="fas fa-user-plus"></i> Registrar proveedor
+                </a>
+                <a class="active" href="historial.html">
+                    <i class="fas fa-history"></i> Equipos Alquilados
+                </a>
+                <a href="danos.html">
+                    <i class="fas fa-triangle-exclamation"></i> Daños
+                </a>
+                <a href="pagos.html">
+                    <i class="fas fa-credit-card"></i> Pagos
+                </a>
+                <a href="metricas.html">
+                    <i class="fas fa-chart-pie"></i> Métricas
+                </a>
+            </nav>
+        </div>
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+
+    <main class="main-content">
+        <section class="action-bar">
+            <h1>Historial de Alquileres</h1>
+            <p>Registro completo de transacciones</p>
+        </section>
+
+        <section class="user-stats">
+            <div class="stat-card">
+                <i class="fas fa-file-contract"></i>
+                <div class="stat-info">
+                    <span class="label">Total Alquileres</span>
+                    <h2>25</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-info">
+                    <span class="label">En Proceso</span>
+                    <h2>5</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-info">
+                    <span class="label">Finalizados</span>
+                    <h2>20</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-tools">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchHistory" placeholder="Buscar por usuario o herramienta...">
+            </div>
+            
+            <div class="filter-group">
+                <select id="filterStatus">
+                    <option value="">Todos los Estados</option>
+                    <option value="finalizado">Finalizado</option>
+                    <option value="proceso">En Proceso</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Herramienta</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana Torres</td>
+                            <td>Taladro Percutor</td>
+                            <td>01/02/2026</td>
+                            <td>05/02/2026</td>
+                            <td><span class="badge activo">Finalizado</span></td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Ruiz</td>
+                            <td>Sierra Circular</td>
+                            <td>03/02/2026</td>
+                            <td>07/02/2026</td>
+                            <td><span class="badge inactivo">En Proceso</span></td>
+                        </tr>
+                        <tr>
+                            <td>María Gómez</td>
+                            <td>Generador Eléctrico</td>
+                            <td>05/02/2026</td>
+                            <td>10/02/2026</td>
+                            <td><span class="badge inactivo">En Proceso</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="/src/main/resources/static/js/admin/historialproveedor.js"></script>
+</body>
+</html>
