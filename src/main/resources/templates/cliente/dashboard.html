@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente | ToolsX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/dashboardcliente.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div>
+                <div class="logo">
+                    <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                    <span class="logo-text">
+                        <span class="orange">T</span><span class="white">OOLSX</span>
+                    </span>
+                </div>
+
+                <nav id="main-nav">
+                    <a class="active" href="#" data-section="explorar"><i class="fas fa-chart-line"></i>Explorar Herramientas</a>
+                    <a href="/src/main/resources/templates/cliente/reserva.html" data-section="clientes"><i class="fas fa-users"></i>Reservas</a>
+                    <a href="#" data-section="proveedores"><i class="fas fa-user-tie"></i> Proveedores</a>
+                    <a href="/src/main/resources/templates/cliente/alquilados.html" data-section="alquilados"><i class="fas fa-tools"></i> Equipos alquilados</a>
+                    <a href="#" data-section="historial"><i class="fas fa-history"></i> Historial</a>
+                </nav>
+            </div>
+            <button class="logout">Cerrar sesión</button>
+        </aside>
+
+        <main class="main-content" style="flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden;">
+    <header class="content-header">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-titles">
+                    <h2 id="main-section-title">EXPLORAR HERRAMIENTAS</h2>
+                    <p id="main-section-desc">Listado de equipos disponibles para alquiler inmediato</p>
+                </div>
+            </div>
+
+            <div class="category-filters" id="filters-container">
+                <span>Filtrar por:</span>
+                <button class="filter-btn active" data-category="TODAS">TODAS</button>
+                <button class="filter-btn" data-category="ELÉCTRICAS">ELÉCTRICAS</button>
+                <button class="filter-btn" data-category="MANUALES">MANUALES</button>
+                <button class="filter-btn" data-category="CONSTRUCCIÓN">CONSTRUCCIÓN</button>
+                <button class="filter-btn" data-category="SEGURIDAD">SEGURIDAD</button>
+
+                <div class="dropdown-availability">
+                    <button class="drop-btn">
+                        DISPONIBILIDAD <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <button class="filter-status" data-status="DISPONIBLE">DISPONIBLES</button>
+                        <button class="filter-status" data-status="NO DISPONIBLE">NO DISPONIBLES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="scrollable-content" style="flex: 1; overflow-y: auto; padding: 0 40px 40px 40px;">
+        <section id="explorar-section" class="content-section">
+            <div class="container">
+                <div class="product-grid" id="product-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 35px; padding-bottom: 50px;">
+                    </div>
+            </div>
+        </section>
+
+        <section id="alquilados-section" class="content-section" style="display: none; padding-top: 30px;">
+            <div class="container">
+                <div class="table-container" style="background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead style="background: rgba(255, 122, 0, 0.1); color: var(--primary-orange);">
+                            <tr>
+                                <th style="padding: 15px; font-size: 12px; text-transform: uppercase;">Herramienta</th>
+                                <th style="padding: 15px; font-size: 12px; text-transform: uppercase;">Cliente</th>
+                                <th style="padding: 15px; font-size: 12px; text-transform: uppercase;">Pago</th>
+                                <th style="padding: 15px; font-size: 12px; text-transform: uppercase;">Abono (50%)</th>
+                                <th style="padding: 15px; font-size: 12px; text-transform: uppercase;">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-alquilados-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+    </div>
+
+    <div id="rental-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">DETALLES DEL PROCESO</h2>
+            
+            <div class="modal-product-info">
+                <p><strong>Equipo:</strong> <span id="display-item-name"></span></p>
+                <p><strong>Costo por Día:</strong> $<span id="display-item-price"></span></p>
+                <p><strong>Abono Requerido (50%):</strong> $<span id="display-deposit"></span></p>
+            </div>
+
+            <form id="rental-form">
+                <div class="input-group">
+                    <label>Nombre del Cliente</label>
+                    <input type="text" id="client-name" placeholder="Nombre Completo" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="client-email" placeholder="ejemplo@correo.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>¿Cuándo desea realizar el pago?</label>
+                    <select id="payment-time">
+                        <option value="ahora">Pagar Abono Ahora</option>
+                        <option value="entrega">Pagar al Recibir el Equipo</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Método de Pago</label>
+                    <select id="payment-method">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="transferencia">Transferencia Bancaria</option>
+                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="confirm-btn">CONFIRMAR OPERACIÓN</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/src/main/resources/static/js/cliente/dashboardfiltrar.js"></script>
+</body>
+</html>
