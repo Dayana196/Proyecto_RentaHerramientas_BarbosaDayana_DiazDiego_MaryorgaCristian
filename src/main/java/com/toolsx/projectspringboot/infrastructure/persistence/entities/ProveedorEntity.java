@@ -19,7 +19,7 @@ public class ProveedorEntity {
 
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
-    private Usuario usuario;
+    private UsuarioEntity usuario;
 
     private String nombreEmpresa;
 
@@ -28,7 +28,7 @@ public class ProveedorEntity {
     public ProveedorEntity() {
     }
 
-    public ProveedorEntity(Long id, Usuario usuario, String nombreEmpresa, String telefonoContacto) {
+    public ProveedorEntity(Long id, UsuarioEntity usuario, String nombreEmpresa, String telefonoContacto) {
         this.id = id;
         this.usuario = usuario;
         this.nombreEmpresa = nombreEmpresa;
@@ -43,11 +43,11 @@ public class ProveedorEntity {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioEntity getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
     }
 

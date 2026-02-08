@@ -1,6 +1,5 @@
 package com.toolsx.projectspringboot.infrastructure.persistence.entities;
 
-import com.toolsx.projectspringboot.domain.model.Usuario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class ClienteEntity {
 
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
-    private Usuario usuario;
+    private UsuarioEntity usuario;
 
     private String nombreCompleto;
 
@@ -28,7 +27,7 @@ public class ClienteEntity {
     public ClienteEntity() {
     }
 
-    public ClienteEntity(Long id, Usuario usuario, String nombreCompleto, String telefono) {
+    public ClienteEntity(Long id, UsuarioEntity usuario, String nombreCompleto, String telefono) {
         this.id = id;
         this.usuario = usuario;
         this.nombreCompleto = nombreCompleto;
@@ -43,11 +42,11 @@ public class ClienteEntity {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioEntity getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
     }
 
