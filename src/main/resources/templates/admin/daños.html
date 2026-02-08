@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos Alquilados | ToolsX</title>
+    <title>Gestión de Daños | ToolsX</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/equiposalquilados.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
 </head>
 <body>
 <div class="app-container">
@@ -33,10 +33,10 @@
                 <a href="registerproveedor.html">
                     <i class="fas fa-user-plus"></i> Registrar proveedor
                 </a>
-                <a class="active" href="historial.html">
+                <a  href="/src/main/resources/templates/admin/equiposalquilados.html">
                     <i class="fas fa-history"></i> Equipos alquilados
                 </a>
-                <a href="/src/main/resources/templates/admin/daños.html">
+                <a class="active" href="danos.html">
                     <i class="fas fa-triangle-exclamation"></i> Daños
                 </a>
                 <a href="/src/main/resources/templates/admin/pagos.html">
@@ -52,30 +52,30 @@
 
     <main class="main-content">
         <section class="action-bar">
-            <h1>Equipos en Alquiler</h1>
-            <p>Monitorea y gestiona los equipos activos</p>
+            <h1>Gestión de Daños</h1>
+            <p>Reportes y estado de herramientas dañadas</p>
         </section>
 
         <section class="user-stats">
             <div class="stat-card">
-                <i class="fas fa-tools"></i>
-                <div class="stat-info">
-                    <span class="label">Total en Renta</span>
-                    <h2>8</h2>
-                </div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-calendar-alt"></i>
-                <div class="stat-info">
-                    <span class="label">Vencen Hoy</span>
-                    <h2>2</h2>
-                </div>
-            </div>
-            <div class="stat-card">
                 <i class="fas fa-exclamation-triangle"></i>
                 <div class="stat-info">
-                    <span class="label">Retrasos</span>
+                    <span class="label">Reportes Activos</span>
+                    <h2>3</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tools"></i>
+                <div class="stat-info">
+                    <span class="label">En Reparación</span>
                     <h2>1</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-info">
+                    <span class="label">Reparados</span>
+                    <h2>2</h2>
                 </div>
             </div>
         </section>
@@ -83,7 +83,7 @@
         <section class="table-tools">
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchEquipment" placeholder="Buscar herramienta o usuario...">
+                <input type="text" id="searchDamage" placeholder="Buscar herramienta o usuario...">
             </div>
         </section>
 
@@ -92,35 +92,30 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Imagen</th>
-                            <th>Equipo</th>
+                            <th>Herramienta</th>
                             <th>Usuario</th>
-                            <th>Devolución</th>
+                            <th>Fecha</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><img src="/src/main/resources/static/img/taladro.jpg" alt="Equipo" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;"></td>
                             <td>Taladro Percutor</td>
                             <td>Ana Torres</td>
-                            <td>10/02/2026</td>
-                            <td><span class="badge activo">A tiempo</span></td>
+                            <td>06/02/2026</td>
+                            <td><span class="badge" style="background: #e74c3c; color: white;">Pendiente</span></td>
                             <td class="actions">
-                                <button class="btn-edit" title="Extender Alquiler"><i class="fas fa-calendar-plus"></i></button>
-                                <button class="btn-delete" title="Reportar Daño" style="color: #e74c3c;"><i class="fas fa-hammer"></i></button>
+                                <button class="btn-edit" title="Gestionar"><i class="fas fa-cogs"></i></button>
                             </td>
                         </tr>
                         <tr>
-                            <td><img src="/src/main/resources/static/img/sierra.jpg" alt="Equipo" style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;"></td>
                             <td>Sierra Circular</td>
                             <td>Carlos Ruiz</td>
-                            <td>08/02/2026</td>
-                            <td><span class="badge inactivo" style="background: #e67e22; color: #fff;">Retraso</span></td>
+                            <td>05/02/2026</td>
+                            <td><span class="badge" style="background: #f1c40f; color: black;">En Reparación</span></td>
                             <td class="actions">
-                                <button class="btn-edit" title="Extender Alquiler"><i class="fas fa-calendar-plus"></i></button>
-                                <button class="btn-delete" title="Reportar Daño" style="color: #e74c3c;"><i class="fas fa-hammer"></i></button>
+                                <button class="btn-edit" title="Gestionar"><i class="fas fa-cogs"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -129,6 +124,36 @@
         </section>
     </main>
 </div>
-<script src="/src/main/resources/static/js/admin/equiposalquilados.js"></script>
+
+<div id="damageModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Gestionar Daño</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <form id="damageForm">
+            <div class="input-group">
+                <label>Herramienta</label>
+                <input type="text" id="damageTool" readonly>
+            </div>
+            <div class="input-group">
+                <label>Observaciones del Administrador</label>
+                <textarea id="damageNotes" rows="4" style="width: 100%; background: #000; color: #fff; border: 1px solid var(--border-color); border-radius: 6px; padding: 10px;"></textarea>
+            </div>
+            <div class="input-group">
+                <label>Actualizar Estado</label>
+                <select id="damageStatus">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="reparacion">En Reparación</option>
+                    <option value="reparado">Reparado</option>
+                    <option value="baja">De Baja</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Actualizar Reporte</button>
+        </form>
+    </div>
+</div>
+
+<script src="/src/main/resources/static/js/admin/daños.js"></script>
 </body>
 </html>

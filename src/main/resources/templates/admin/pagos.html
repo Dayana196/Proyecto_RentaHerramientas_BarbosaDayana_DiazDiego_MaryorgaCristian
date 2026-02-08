@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisión de Pagos | ToolsX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+            <nav>
+                <a href="/src/main/resources/templates/admin/dashboard.html">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="/src/main/resources/templates/admin/clientes.html">
+                    <i class="fas fa-users"></i> Clientes
+                </a>
+                <a href="/src/main/resources/templates/admin/proveedores.html">
+                    <i class="fas fa-user-tie"></i> Proveedores
+                </a>
+                <a href="/src/main/resources/templates/admin/registerproveedor.html">
+                    <i class="fas fa-user-plus"></i> Registrar proveedor
+                </a>
+                <a href="/src/main/resources/templates/admin/equiposalquilados.html">
+                    <i class="fas fa-history"></i> Equipos alquilados
+                </a>
+                <a href="/src/main/resources/templates/admin/daños.html">
+                    <i class="fas fa-triangle-exclamation"></i> Daños
+                </a>
+                <a class="active" href="pagos.html">
+                    <i class="fas fa-credit-card"></i> Pagos
+                </a>
+                <a href="/src/main/resources/templates/admin/metricas.html">
+                    <i class="fas fa-chart-pie"></i> Métricas
+                </a>
+            </nav>
+        </div>
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+
+    <main class="main-content">
+        <section class="action-bar">
+            <h1>Supervisión de Pagos</h1>
+            <p>Control y consulta de facturación del sistema</p>
+        </section>
+
+        <section class="user-stats">
+            <div class="stat-card">
+                <i class="fas fa-dollar-sign"></i>
+                <div class="stat-info">
+                    <span class="label">Facturación Total</span>
+                    <h2>$15,250.00</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-exclamation-circle" style="color: #e67e22;"></i>
+                <div class="stat-info">
+                    <span class="label">Por Cobrar (Pendientes)</span>
+                    <h2>$450.00</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-undo" style="color: #3498db;"></i>
+                <div class="stat-info">
+                    <span class="label">Total Reembolsado</span>
+                    <h2>$120.00</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-tools">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchPayment" placeholder="Buscar por usuario o ID de transacción...">
+            </div>
+            <div class="filter-group">
+                <select id="filterStatus">
+                    <option value="">Todos los Estados</option>
+                    <option value="pagado">Pagado</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="reembolsado">Reembolsado</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Transacción</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>#TXN-1001</td><td>Ana Torres</td><td>05/02/2026</td><td>$150.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1002</td><td>Carlos Ruiz</td><td>06/02/2026</td><td>$80.00</td><td><span class="badge" style="background: #e67e22; color: #fff;">Pendiente</span></td></tr>
+                        <tr><td>#TXN-1003</td><td>María Gómez</td><td>06/02/2026</td><td>$200.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1004</td><td>Pedro López</td><td>07/02/2026</td><td>$50.00</td><td><span class="badge" style="background: #3498db; color: #fff;">Reembolsado</span></td></tr>
+                        <tr><td>#TXN-1005</td><td>Lucía Fernández</td><td>07/02/2026</td><td>$300.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1006</td><td>Juan Pérez</td><td>07/02/2026</td><td>$120.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1007</td><td>Elena Ruiz</td><td>08/02/2026</td><td>$90.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1008</td><td>Diego Sánchez</td><td>08/02/2026</td><td>$180.00</td><td><span class="badge" style="background: #e67e22; color: #fff;">Pendiente</span></td></tr>
+                        <tr><td>#TXN-1009</td><td>Sofía Castro</td><td>08/02/2026</td><td>$400.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                        <tr><td>#TXN-1010</td><td>Luis Morales</td><td>08/02/2026</td><td>$60.00</td><td><span class="badge activo">Pagado</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="/src/main/resources/static/js/admin/pagos.js"></script>
+</body>
+</html>

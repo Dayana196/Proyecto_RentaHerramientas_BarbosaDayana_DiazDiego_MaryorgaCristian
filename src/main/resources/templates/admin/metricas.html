@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes y Métricas | ToolsX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/clientes.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/metricas.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div>
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench logo-icon"></i>
+                <span class="logo-text">
+                    <span class="orange">T</span><span class="white">OOLSX</span>
+                </span>
+            </div>
+            <nav>
+                <a href="/src/main/resources/templates/admin/dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="/src/main/resources/templates/admin/clientes.html"><i class="fas fa-users"></i> Clientes</a>
+                <a href="/src/main/resources/templates/admin/proveedores.html"><i class="fas fa-user-tie"></i> Proveedores</a>
+                <a href="/src/main/resources/templates/admin/registerproveedor.html"><i class="fas fa-user-plus"></i> Registrar proveedor</a>
+                <a href="/src/main/resources/templates/admin/equiposalquilados.html"><i class="fas fa-history"></i> Equipos Alquilados</a>
+                <a href="/src/main/resources/templates/admin/daños.html"><i class="fas fa-triangle-exclamation"></i> Daños</a>
+                <a href="/src/main/resources/templates/admin/pagos.html"><i class="fas fa-credit-card"></i> Pagos</a>
+                <a class="active" href="metricas.html"><i class="fas fa-chart-pie"></i> Métricas</a>
+            </nav>
+        </div>
+        <button class="logout">Cerrar sesión</button>
+    </aside>
+
+    <main class="main-content">
+        <section class="action-bar">
+            <h1>Reportes y Métricas</h1>
+            <p>Visualización del rendimiento y rentabilidad del sistema</p>
+        </section>
+
+        <section class="user-stats">
+            <div class="stat-card">
+                <i class="fas fa-chart-line" style="color: #27ae60;"></i>
+                <div class="stat-info">
+                    <span class="label">Ingreso Mensual</span>
+                    <h2>$4,500.00</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-percent" style="color: #3498db;"></i>
+                <div class="stat-info">
+                    <span class="label">Rentabilidad Neta</span>
+                    <h2>65%</h2>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-box-open" style="color: #f1c40f;"></i>
+                <div class="stat-info">
+                    <span class="label">Total Herramientas</span>
+                    <h2>120</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <a href="#" class="action-card" onclick="alert('Descargando reporte...'); return false;">
+                <i class="fas fa-file-download"></i>
+                <h3>Exportar Reporte</h3>
+                <p>Descargar Excel de métricas</p>
+            </a>
+            
+            <a href="#" class="action-card" onclick="openInventoryModal(); return false;">
+                <i class="fas fa-tools"></i>
+                <h3>Gestionar Inventario</h3>
+                <p>Añadir nuevas herramientas</p>
+            </a>
+            
+            <a href="#" class="action-card" onclick="openMaintenanceModal(); return false;">
+                <i class="fas fa-tasks"></i>
+                <h3>Planificar Mantenimiento</h3>
+                <p>Revisar agenda de equipos</p>
+            </a>
+        </section>
+
+        <section class="data-section">
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 18px; margin-bottom: 15px;">Herramientas más alquiladas</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ranking</th>
+                            <th>Herramienta</th>
+                            <th>Veces Alquilado</th>
+                            <th>Ingreso Generado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Taladro Percutor</td><td>45</td><td>$900.00</td></tr>
+                        <tr><td>2</td><td>Sierra Circular</td><td>32</td><td>$640.00</td></tr>
+                        <tr><td>3</td><td>Generador Eléctrico</td><td>28</td><td>$1,120.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="inventoryModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Añadir Nuevo Equipo</h2>
+            <span class="close-modal" onclick="closeInventoryModal()">&times;</span>
+        </div>
+        <form id="addToolForm">
+            <div class="input-group">
+                <label>Nombre del Equipo</label>
+                <input type="text" placeholder="Ej. Taladro Bosch" required>
+            </div>
+            <div class="input-group">
+                <label>Categoría</label>
+                <select>
+                    <option>Eléctrica</option>
+                    <option>Manual</option>
+                    <option>Construccion</option>
+                    <option>Seguridad</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Precio de Alquiler por Día</label>
+                <input type="number" placeholder="$0.00" required>
+            </div>
+            <button type="submit" class="btn-add" style="width: 100%; border: none; padding: 12px; cursor:pointer;">Guardar Equipo</button>
+        </form>
+    </div>
+</div>
+
+<div id="maintenanceModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Planificar Mantenimiento</h2>
+            <span class="close-modal" onclick="closeMaintenanceModal()">&times;</span>
+        </div>
+        <form id="maintenanceForm">
+            <div class="input-group">
+                <label>Seleccionar Herramienta</label>
+                <select id="maintenanceToolSelect" required style="max-height: 200px; overflow-y: auto;">
+                    <option value="">Seleccionar herramienta...</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Fecha de Mantenimiento</label>
+                <input type="date" required>
+            </div>
+            <div class="input-group">
+                <label>Tipo de Mantenimiento</label>
+                <select>
+                    <option>Preventivo</option>
+                    <option>Correctivo</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-add" style="width: 100%; border: none; padding: 12px; cursor:pointer;">Programar</button>
+        </form>
+    </div>
+</div>
+
+<script src="/src/main/resources/static/js/admin/metricas.js"></script>
+</body>
+</html>

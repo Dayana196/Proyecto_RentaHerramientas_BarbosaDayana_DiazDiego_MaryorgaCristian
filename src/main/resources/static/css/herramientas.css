@@ -325,3 +325,22 @@ tbody tr:hover {
 .btn-save:hover, .btn-cancel:hover {
     opacity: 0.8;
 }
+
+.card-img-container {
+    width: 100%;
+    height: 150px; /* Altura fija para todas las tarjetas */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    background-color: #222; /* Fondo mientras carga la imagen */
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1); /* Efecto zoom al pasar el mouse */
+}
