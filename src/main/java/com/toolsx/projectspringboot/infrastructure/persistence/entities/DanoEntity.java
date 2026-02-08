@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "danos")
-public class Dano {
+public class DanoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +29,10 @@ public class Dano {
     @JoinColumn(name = "herramienta_id", nullable = false)
     private HerramientaEntity herramienta;
 
-    public Dano() {
+    public DanoEntity() {
     }
 
-    public Dano(Long id, String descripcion, BigDecimal costoReparacion, LocalDateTime fechaReporte,
+    public DanoEntity(Long id, String descripcion, BigDecimal costoReparacion, LocalDateTime fechaReporte,
             HerramientaEntity herramienta) {
         this.id = id;
         this.descripcion = descripcion;
