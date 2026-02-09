@@ -1,67 +1,56 @@
-# 🛠️ ToolsX - Plataforma de Renta de Herramientas y Equipos de Construcción
 
-**ToolsX** es una solución integral desarrollada con **Spring Boot** para digitalizar el proceso de alquiler de maquinaria y herramientas. La plataforma permite a los proveedores gestionar su inventario y a los clientes realizar reservas seguras con confirmación de pago y facturación automática.
+# 🛠️ TOOLSX  
+### Plataforma de Renta de Herramientas y Equipos de Construcción
 
----
+## 📌 Descripción del Proyecto
 
-## 👥 Equipo 
-* **Dayana Barbosa**
-* **Diego Diaz**
-* **Cristian Mayorga**
+**ToolsX** es una plataforma web desarrollada con **Spring Boot** que permite la gestión completa del alquiler de herramientas y equipos de construcción.  
+El sistema está diseñado para **administradores, proveedores y clientes**, facilitando el registro de herramientas, reservas, pagos, devoluciones y facturación de forma eficiente y segura.
 
----
+## 👥 Integrantes del Equipo
 
-## 🚀 Tecnologías Implementadas
+- Dayana Barbosa  
+- Diego Díaz  
+- Cristian Mayorga  
 
-### **Backend**
-* **Lenguaje:** Java 21
-* **Framework:** Spring Boot
-* **Seguridad:** Spring Security con autenticación basada en **JWT (JSON Web Tokens)**
-* **Persistencia:** Spring Data JPA
-* **Base de Datos:** MySQL
-* **Documentación:** Swagger / OpenAPI
+## 🚀 Tecnologías Utilizadas
 
-### **Frontend**
-* **Lenguaje:** HTML5, CSS3, JavaScript (Vanilla)
+### Backend
+- Java 21  
+- Spring Boot  
+- Spring Security + JWT  
+- Spring Data JPA  
+- MySQL  
 
----
+### Frontend
+- HTML5  
+- CSS3  
+- JavaScript   
 
-## Perfiles de Usuario y Funcionalidades
+## Roles del Sistema
 
-### 1️⃣ Administrador (Rol: Admin)
-* **Gestión de Usuarios:** Registro y administración de proveedores y clientes.
-* **Supervisión de Equipos:** Verificación del estado físico de las herramientas.
-* **Control de Alquileres:** Acceso al historial global y reportes de daños.
-* **Métricas:** Estadísticas de ingresos y equipos con mayor rentabilidad.
+- **Administrador**
+- **Proveedor**
+- **Cliente**
 
-### 2️⃣ Proveedor de Equipos (Rol: Proveedor)
-* **Gestión de Inventario:** CRUD completo de herramientas (precios, descripción).
-* **Gestión de Reservas:** Aceptar/Rechazar solicitudes y confirmar devoluciones.
-* **Facturación:** Generación automática de facturas por servicios prestados.
+## Base de Datos
 
-### 3️⃣ Cliente (Rol: Cliente)
-* **Exploración:** Catálogo con búsqueda por categoría y disponibilidad.
-* **Reservas:** Selección de fechas y confirmación de alquiler.
-* **Pagos:** Registro de pagos en línea y descarga de comprobantes.
-* **Historial:** Seguimiento de herramientas rentadas anteriormente.
+Base de datos relacional normalizada con entidades como:
+Usuarios, Roles, Clientes, Proveedores, Herramientas, Reservas, Pagos, Facturas, Devoluciones y Daños.
 
----
+## Autenticación
 
-## 🗃️ Modelo de Datos
+- JWT
+- Spring Security
+- Control de acceso por roles
 
-La base de datos está normalizada y diseñada para garantizar la trazabilidad de cada herramienta. Incluye módulos de seguridad, inventario, transacciones financieras y control de daños.
 
----
+## Ejecución
 
-## ⚙️ Configuración e Instalación
+```bash
+mvn spring-boot:run
+```
 
-### **Requisitos**
-* JDK 21 o superior.
-* MySQL Server.
-* Maven instalado.
+## Estado del Proyecto
 
-### **Pasos para ejecución**
-
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/Dayana196/Proyecto_RentaHerramientas_BarbosaDayana_DiazDiego_MaryorgaCristian.git]
+Proyecto académico en desarrollo.
