@@ -2,7 +2,6 @@ package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
 
 import java.util.Map;
 
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
