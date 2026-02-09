@@ -64,4 +64,4 @@ La base de datos está normalizada y diseñada para garantizar la trazabilidad d
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/Proyecto_RentaHerramientas_ToolsX.git](https://github.com/tu-usuario/Proyecto_RentaHerramientas_ToolsX.git)
+   git clone [https://github.com/Dayana196/Proyecto_RentaHerramientas_BarbosaDayana_DiazDiego_MaryorgaCristian.git]
