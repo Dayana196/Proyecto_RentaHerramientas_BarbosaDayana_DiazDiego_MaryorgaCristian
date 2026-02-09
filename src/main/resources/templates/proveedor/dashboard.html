@@ -2,6 +2,50 @@
 <html lang="es">
 
 <head>
+    <script>
+        function checkRole(allowedRole) {
+        const interval = setInterval(() => {
+        const token = localStorage.getItem('token');
+        console.log("TOKEN EN INDEX:", token);
+
+        if (!token) {
+            alert('No has iniciado sesión');
+            window.location.replace('/src/main/resources/templates/cliente/login.html');
+            clearInterval(interval);
+            return;
+        }
+
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const role = payload.role || payload.roles?.[0];
+
+        if (role !== allowedRole) {
+            alert('No tienes permiso para acceder a esta sección');
+            localStorage.removeItem('token');
+            window.location.replace('/src/main/resources/templates/cliente/login.html');
+            clearInterval(interval);
+        }
+    }, 1000); // revisa cada segundo
+}
+    </script>
+    <script>
+        checkRole('PROVEEDOR'); // Solo el rol PROVEEDOR puede ver esta página
+    </script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token"); // 🔥 borrar token
+            window.location.replace(
+            "/src/main/resources/templates/cliente/login.html"
+            );
+        }
+    </script>
+    <script>
+        if (!localStorage.getItem("token")) {
+            window.location.replace(
+            "/src/main/resources/templates/cliente/login.html"
+            );
+        }
+    </script>
+    <meta charset="UTF-8">
     <meta charset="UTF-8">
     <title>Proveedor | ToolsX</title>
 
@@ -35,7 +79,7 @@
             </nav>
         </div>
 
-        <button class="logout">Cerrar sesión</button>
+        <button class="logout" onclick="logout()">Cerrar sesión</button>
     </aside>
     <main class="main-content">
 

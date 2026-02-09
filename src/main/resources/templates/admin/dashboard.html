@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script>
+        const token = localStorage.getItem('token');
+        console.log("TOKEN EN INDEX:", token);
+
+        if (!token) {
+            window.location.replace('/src/main/resources/templates/cliente/login.html');
+        } else {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const role = payload.role || payload.roles?.[0];
+
+            if (role !== 'ADMIN') {
+                alert('No tienes permiso para acceder a esta sección');
+                localStorage.removeItem('token');
+                window.location.replace('/src/main/resources/templates/cliente/login.html');
+            }
+        }
+    </script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token"); // 🔥 borrar token
+            window.location.replace(
+            "/src/main/resources/templates/cliente/login.html"
+            );
+        }
+    </script>
+    <script>
+        if (!localStorage.getItem("token")) {
+            window.location.replace(
+            "/src/main/resources/templates/cliente/login.html"
+            );
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | ToolsX</title>
@@ -31,7 +63,7 @@
                     <a href="/src/main/resources/templates/admin/metricas.html"><i class="fas fa-chart-pie"></i> Métricas</a>
                 </nav>
             </div>
-            <button class="logout">Cerrar sesión</button>
+            <button class="logout" onclick="logout()">Cerrar sesión</button>
         </aside>
         
         <main class="main-content">
