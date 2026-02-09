@@ -1,46 +1,34 @@
 package com.toolsx.projectspringboot.infrastructure.persistence.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "reservas")
 public class ReservaEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String estado;
-
-    private LocalDate fechaInicio;
-
-    private LocalDate fechaFin;
-
-    private LocalDateTime fechaCreacion;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private UsuarioEntity usuario; // 👈 Usar la entidad JPA
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private ClienteEntity cliente;
+    @JoinColumn(name = "herramienta_id", nullable = false)
+    private HerramientaEntity herramienta; // 👈 Usar la entidad JPA
+
+    private LocalDate fechaReserva;
 
     public ReservaEntity() {
     }
 
-    public ReservaEntity(Long id, String estado, LocalDate fechaInicio, LocalDate fechaFin, LocalDateTime fechaCreacion,
-            ClienteEntity cliente) {
+    public ReservaEntity(LocalDate fechaReserva, HerramientaEntity herramienta, Long id, UsuarioEntity usuario) {
+        this.fechaReserva = fechaReserva;
+        this.herramienta = herramienta;
         this.id = id;
-        this.estado = estado;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.fechaCreacion = fechaCreacion;
-        this.cliente = cliente;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -51,44 +39,28 @@ public class ReservaEntity {
         this.id = id;
     }
 
-    public String getEstado() {
-        return estado;
+    public UsuarioEntity getUsuario() {
+        return usuario;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
     }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
+    public HerramientaEntity getHerramienta() {
+        return herramienta;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setHerramienta(HerramientaEntity herramienta) {
+        this.herramienta = herramienta;
     }
 
-    public LocalDate getFechaFin() {
-        return fechaFin;
+    public LocalDate getFechaReserva() {
+        return fechaReserva;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public ClienteEntity getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(ClienteEntity cliente) {
-        this.cliente = cliente;
+    public void setFechaReserva(LocalDate fechaReserva) {
+        this.fechaReserva = fechaReserva;
     }
 
     
