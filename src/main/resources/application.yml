@@ -1,11 +1,11 @@
-spring:
+﻿spring:
   application:
     name: projectspringboot
 
   datasource:
-    url: jdbc:mysql://localhost:3306/toolsx_container?serverTimezone=UTC
+    url: ${DB_URL:jdbc:mysql://localhost:3306/toolsx_container?serverTimezone=UTC}
     username: root
-    password: admin123
+    password: Kaneki#G1317
     driver-class-name: com.mysql.cj.jdbc.Driver
 
     hikari:
@@ -17,7 +17,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update   # SOLO la primera vez
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
@@ -25,4 +25,15 @@ spring:
         format_sql: true
 
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
+
+security:
+  jwt:
+    secret: ${JWT_SECRET:toolsx_super_secret_key_2026_seguridad_jwt}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+logging:
+  level:
+    com.toolsx.projectspringboot: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG

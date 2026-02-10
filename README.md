@@ -1,56 +1,39 @@
+﻿# TOOLSX
 
-# 🛠️ TOOLSX  
-### Plataforma de Renta de Herramientas y Equipos de Construcción
+Plataforma de Renta de Herramientas y Equipos de Construccion (Backend).
 
-## 📌 Descripción del Proyecto
+## Tecnologias
+- Java 17
+- Spring Boot (version del proyecto)
+- Spring Security + JWT
+- Spring Data JPA
+- MySQL
 
-**ToolsX** es una plataforma web desarrollada con **Spring Boot** que permite la gestión completa del alquiler de herramientas y equipos de construcción.  
-El sistema está diseñado para **administradores, proveedores y clientes**, facilitando el registro de herramientas, reservas, pagos, devoluciones y facturación de forma eficiente y segura.
+## Configuracion
+Variables de entorno (opcionales):
+- `DB_URL` (default: `jdbc:mysql://localhost:3306/toolsx_container?serverTimezone=UTC`)
+- `DB_USER` (default: `root`)
+- `DB_PASSWORD` (default: vacio)
+- `JWT_SECRET` (default: `toolsx_super_secret_key_2026_seguridad_jwt`)
+- `JWT_EXPIRATION_MS` (default: `86400000`)
+- `SERVER_PORT` (default: `8080`)
 
-## 👥 Integrantes del Equipo
+Perfiles:
+- `dev` usa `toolsx_container_dev`
+- `prod` usa `toolsx_container_prod`
 
-- Dayana Barbosa  
-- Diego Díaz  
-- Cristian Mayorga  
-
-## 🚀 Tecnologías Utilizadas
-
-### Backend
-- Java 21  
-- Spring Boot  
-- Spring Security + JWT  
-- Spring Data JPA  
-- MySQL  
-
-### Frontend
-- HTML5  
-- CSS3  
-- JavaScript   
-
-## Roles del Sistema
-
-- **Administrador**
-- **Proveedor**
-- **Cliente**
-
-## Base de Datos
-
-Base de datos relacional normalizada con entidades como:
-Usuarios, Roles, Clientes, Proveedores, Herramientas, Reservas, Pagos, Facturas, Devoluciones y Daños.
-
-## Autenticación
-
-- JWT
-- Spring Security
-- Control de acceso por roles
-
-
-## Ejecución
-
+## Ejecutar
 ```bash
 mvn spring-boot:run
 ```
 
-## Estado del Proyecto
-
-Proyecto académico en desarrollo.
+## Endpoints principales
+- `POST /auth/login`
+- `POST /auth/register`
+- `GET /api/herramientas`
+- `GET /api/herramientas/disponibles`
+- `CRUD /api/proveedores`
+- `CRUD /api/clientes`
+- `CRUD /api/categorias`
+- `CRUD /api/reservas`
+- `CRUD /api/pagos`

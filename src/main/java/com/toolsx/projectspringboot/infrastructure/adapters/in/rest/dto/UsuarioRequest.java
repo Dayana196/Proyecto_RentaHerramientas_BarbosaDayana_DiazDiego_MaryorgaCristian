@@ -1,11 +1,23 @@
-package com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto;
+﻿package com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto;
 
 import java.util.Set;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 public class UsuarioRequest {
+    @NotBlank
     private String usuario;
+
+    @NotBlank
+    @Email
     private String correo;
+
+    @NotBlank
     private String password;
+
+    @NotEmpty
     private Set<String> roles;
 
     public UsuarioRequest() {}
@@ -48,5 +60,4 @@ public class UsuarioRequest {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-    
 }

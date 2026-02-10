@@ -1,5 +1,4 @@
-package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
-
+﻿package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ public class ProveedorController {
         this.proveedorService = proveedorService;
     }
 
-    // ✅ CREATE
     @PostMapping
     public ResponseEntity<ProveedorResponse> crearProveedor(
             @Valid @RequestBody ProveedorCreateRequest request) {
@@ -30,19 +28,16 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedorService.crearProveedor(request));
     }
 
-    // ✅ READ ALL
     @GetMapping
     public ResponseEntity<List<ProveedorResponse>> listar() {
         return ResponseEntity.ok(proveedorService.listarProveedores());
     }
 
-    // ✅ READ ONE
     @GetMapping("/{id}")
     public ResponseEntity<ProveedorResponse> obtener(@PathVariable Long id) {
         return ResponseEntity.ok(proveedorService.obtenerProveedor(id));
     }
 
-    // ✅ UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<ProveedorResponse> actualizar(
             @PathVariable Long id,
@@ -51,5 +46,11 @@ public class ProveedorController {
         return ResponseEntity.ok(
                 proveedorService.actualizarProveedor(id, request)
         );
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        proveedorService.eliminarProveedor(id);
+        return ResponseEntity.noContent().build();
     }
 }

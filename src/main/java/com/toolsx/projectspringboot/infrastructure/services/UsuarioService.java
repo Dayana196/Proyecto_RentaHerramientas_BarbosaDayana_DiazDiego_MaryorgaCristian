@@ -1,8 +1,9 @@
-package com.toolsx.projectspringboot.infrastructure.services;
+﻿package com.toolsx.projectspringboot.infrastructure.services;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,16 +12,17 @@ import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioE
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.RolJpaRepository;
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.UsuarioJpaRepository;
 
-
 @Service
 public class UsuarioService {
 
     private final UsuarioJpaRepository usuarioRepo;
     private final RolJpaRepository rolRepo;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioJpaRepository usuarioRepo, RolJpaRepository rolRepo) {
+    public UsuarioService(UsuarioJpaRepository usuarioRepo, RolJpaRepository rolRepo, PasswordEncoder passwordEncoder) {
         this.usuarioRepo = usuarioRepo;
         this.rolRepo = rolRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -28,7 +30,7 @@ public class UsuarioService {
         UsuarioEntity nuevo = new UsuarioEntity();
         nuevo.setUsuario(usuario);
         nuevo.setCorreo(correo);
-        nuevo.setPassword(password); // recuerda encriptar con BCrypt si es necesario
+        nuevo.setPassword(passwordEncoder.encode(password));
 
         Set<RolEntity> roles = new HashSet<>();
         if (rolesNombres != null) {

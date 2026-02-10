@@ -1,42 +1,48 @@
-package com.toolsx.projectspringboot.application.dto;
+﻿package com.toolsx.projectspringboot.application.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ProveedorCreateRequest {
+    @NotNull
     private Long usuarioId;
+
+    @NotBlank
     private String nombreEmpresa;
+
+    @NotBlank
     private String telefonoContacto;
-    
-	public ProveedorCreateRequest() {
-	}
 
-	public ProveedorCreateRequest(Long usuarioId, String nombreEmpresa, String telefonoContacto) {
-		this.usuarioId = usuarioId;
-		this.nombreEmpresa = nombreEmpresa;
-		this.telefonoContacto = telefonoContacto;
-	}
+    public ProveedorCreateRequest() {
+    }
 
-	public Long getUsuarioId() {
-		return usuarioId;
-	}
+    public ProveedorCreateRequest(Long usuarioId, String nombreEmpresa, String telefonoContacto) {
+        this.usuarioId = usuarioId;
+        this.nombreEmpresa = nombreEmpresa;
+        this.telefonoContacto = telefonoContacto;
+    }
 
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
-	}
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
 
-	public String getNombreEmpresa() {
-		return nombreEmpresa;
-	}
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
 
-	public void setNombreEmpresa(String nombreEmpresa) {
-		this.nombreEmpresa = nombreEmpresa;
-	}
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
 
-	public String getTelefonoContacto() {
-		return telefonoContacto;
-	}
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
 
-	public void setTelefonoContacto(String telefonoContacto) {
-		this.telefonoContacto = telefonoContacto;
-	}
+    public String getTelefonoContacto() {
+        return telefonoContacto;
+    }
 
-    
+    public void setTelefonoContacto(String telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
+    }
 }

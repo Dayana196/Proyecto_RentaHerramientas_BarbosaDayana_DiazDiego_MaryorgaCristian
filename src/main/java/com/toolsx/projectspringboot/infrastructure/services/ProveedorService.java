@@ -1,8 +1,10 @@
-package com.toolsx.projectspringboot.infrastructure.services;
+﻿package com.toolsx.projectspringboot.infrastructure.services;
 
 import com.toolsx.projectspringboot.application.dto.ProveedorCreateRequest;
 import com.toolsx.projectspringboot.application.dto.ProveedorResponse;
 import com.toolsx.projectspringboot.application.dto.ProveedorUpdateRequest;
+import com.toolsx.projectspringboot.domain.exception.ConflictException;
+import com.toolsx.projectspringboot.domain.exception.NotFoundException;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.ProveedorEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.ProveedorRepository;
@@ -24,14 +26,12 @@ public class ProveedorService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    // ✅ CREATE
     public ProveedorResponse crearProveedor(ProveedorCreateRequest request) {
-
         UsuarioEntity usuario = usuarioRepository.findById(request.getUsuarioId())
-                .orElseThrow(() -> new RuntimeException("Usuario no existe"));
+                .orElseThrow(() -> new NotFoundException("Usuario no existe"));
 
         if (proveedorRepository.findByUsuarioId(usuario.getId()).isPresent()) {
-            throw new RuntimeException("Proveedor ya existe para este usuario");
+            throw new ConflictException("Proveedor ya existe para este usuario");
         }
 
         ProveedorEntity proveedor = new ProveedorEntity();
@@ -44,7 +44,6 @@ public class ProveedorService {
         return mapToResponse(guardado);
     }
 
-    // ✅ READ ALL
     public List<ProveedorResponse> listarProveedores() {
         return proveedorRepository.findAll()
                 .stream()
@@ -52,18 +51,16 @@ public class ProveedorService {
                 .toList();
     }
 
-    // ✅ READ ONE
     public ProveedorResponse obtenerProveedor(Long id) {
         ProveedorEntity proveedor = proveedorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+                .orElseThrow(() -> new NotFoundException("Proveedor no encontrado"));
 
         return mapToResponse(proveedor);
     }
 
-    // ✅ UPDATE
     public ProveedorResponse actualizarProveedor(Long id, ProveedorUpdateRequest request) {
         ProveedorEntity proveedor = proveedorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+                .orElseThrow(() -> new NotFoundException("Proveedor no encontrado"));
 
         proveedor.setNombreEmpresa(request.getNombreEmpresa());
         proveedor.setTelefonoContacto(request.getTelefonoContacto());
@@ -72,7 +69,13 @@ public class ProveedorService {
         return mapToResponse(actualizado);
     }
 
-    // 🔁 MAPPER
+    public void eliminarProveedor(Long id) {
+        if (!proveedorRepository.existsById(id)) {
+            throw new NotFoundException("Proveedor no encontrado");
+        }
+        proveedorRepository.deleteById(id);
+    }
+
     private ProveedorResponse mapToResponse(ProveedorEntity proveedor) {
         return new ProveedorResponse(
                 proveedor.getId(),

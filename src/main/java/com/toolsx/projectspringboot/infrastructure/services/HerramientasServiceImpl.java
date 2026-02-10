@@ -1,8 +1,9 @@
-package com.toolsx.projectspringboot.infrastructure.services;
+﻿package com.toolsx.projectspringboot.infrastructure.services;
 
 import java.util.List;
 
 import com.toolsx.projectspringboot.application.services.HerramientasService;
+import com.toolsx.projectspringboot.domain.exception.NotFoundException;
 import com.toolsx.projectspringboot.infrastructure.persistence.entities.HerramientaEntity;
 import com.toolsx.projectspringboot.infrastructure.persistence.repository.HerramientaRepository;
 
@@ -28,6 +29,16 @@ public class HerramientasServiceImpl implements HerramientasService {
     }
 
     @Override
+    public List<HerramientaEntity> listarPorCategoria(Long categoriaId) {
+        return repository.findByCategoria_Id(categoriaId);
+    }
+
+    @Override
+    public List<HerramientaEntity> listarPorProveedor(Long proveedorId) {
+        return repository.findByProveedor_Id(proveedorId);
+    }
+
+    @Override
     public HerramientaEntity guardar(HerramientaEntity herramienta) {
         return repository.save(herramienta);
     }
@@ -35,6 +46,14 @@ public class HerramientasServiceImpl implements HerramientasService {
     @Override
     public HerramientaEntity buscarPorId(Long id) {
         return repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Herramienta no encontrada"));
+            .orElseThrow(() -> new NotFoundException("Herramienta no encontrada"));
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new NotFoundException("Herramienta no encontrada");
+        }
+        repository.deleteById(id);
     }
 }

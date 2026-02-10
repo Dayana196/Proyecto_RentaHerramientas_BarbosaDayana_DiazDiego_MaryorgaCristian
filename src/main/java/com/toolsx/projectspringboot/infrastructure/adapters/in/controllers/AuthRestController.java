@@ -1,4 +1,4 @@
-package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
+﻿package com.toolsx.projectspringboot.infrastructure.adapters.in.controllers;
 
 import java.util.Map;
 
@@ -15,6 +15,8 @@ import com.toolsx.projectspringboot.domain.model.Usuario;
 import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.LoginRequest;
 import com.toolsx.projectspringboot.infrastructure.adapters.in.rest.dto.UsuarioRequest;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/auth")
@@ -28,42 +30,26 @@ public class AuthRestController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+        String token = authService.login(
+                request.getCorreo(),
+                request.getPassword()
+        );
 
-        try {
-            String token = authService.login(
-                    request.getCorreo(),
-                    request.getPassword()
-            );
-
-            return ResponseEntity.ok(
-                Map.of("token", token)
-            );
-
-        } catch (RuntimeException e) {
-            return ResponseEntity
-                    .status(401)
-                    .body("Correo o contraseña incorrectos");
-        }
+        return ResponseEntity.ok(
+            Map.of("token", token)
+        );
     }
 
-
-
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UsuarioRequest usuarioRequest) {
-        try {
-            System.out.println("DEBUG -> Petición de registro recibida para: " + usuarioRequest.getUsuario());
-            
-            Usuario guardado = authService.registrar(usuarioRequest);
-            return ResponseEntity.ok(guardado);
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error interno: " + e.getMessage());
-        }
+    public ResponseEntity<?> register(@Valid @RequestBody UsuarioRequest usuarioRequest) {
+        Usuario guardado = authService.registrar(usuarioRequest);
+        return ResponseEntity.ok(guardado);
     }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logout(){
-        return ResponseEntity.ok("Sesión cerrada exitosamente. Recuerde eliminar el token del almacenamiento local.");
+        return ResponseEntity.ok("Sesion cerrada exitosamente. Elimine el token del almacenamiento local.");
     }
 
     @GetMapping("/validate")

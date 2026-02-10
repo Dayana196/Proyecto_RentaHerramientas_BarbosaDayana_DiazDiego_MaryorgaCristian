@@ -1,5 +1,6 @@
-package com.toolsx.projectspringboot.infrastructure.persistence.mapper;
+﻿package com.toolsx.projectspringboot.infrastructure.persistence.mapper;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -12,12 +13,17 @@ import com.toolsx.projectspringboot.infrastructure.persistence.entities.UsuarioE
 public class UsuarioMapper {
 
     public Usuario toDomain(UsuarioEntity entity) {
-        Usuario usuario = new Usuario();
-        usuario.setId(entity.getId());
-        usuario.setUsuario(entity.getUsuario());
-        usuario.setCorreo(entity.getCorreo());
-        usuario.setPassword(entity.getPassword());
-        return usuario;
+        List<String> roles = entity.getRoles() == null
+                ? Collections.emptyList()
+                : entity.getRoles().stream().map(RolEntity::getNombre).toList();
+
+        return new Usuario(
+            entity.getId(),
+            entity.getUsuario(),
+            entity.getCorreo(),
+            entity.getPassword(),
+            roles
+        );
     }
 
     public UsuarioEntity toEntity(Usuario usuario) {
@@ -32,15 +38,14 @@ public class UsuarioMapper {
     public Usuario mapToDomain(UsuarioEntity entity) {
         List<String> roles = entity.getRoles().stream()
                                 .map(RolEntity::getNombre)
-                                .toList(); // convierte Set<RolEntity> a List<String>
+                                .toList();
 
         return new Usuario(
             entity.getId(),
             entity.getUsuario(),
             entity.getCorreo(),
-            null, // nunca devuelvas la contraseña
+            null,
             roles
         );
+    }
 }
-}
-

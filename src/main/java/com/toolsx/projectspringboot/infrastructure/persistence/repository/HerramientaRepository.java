@@ -1,4 +1,4 @@
-package com.toolsx.projectspringboot.infrastructure.persistence.repository;
+﻿package com.toolsx.projectspringboot.infrastructure.persistence.repository;
 
 import java.util.List;
 
@@ -9,4 +9,5 @@ import com.toolsx.projectspringboot.infrastructure.persistence.entities.Herramie
 public interface HerramientaRepository extends JpaRepository<HerramientaEntity, Long> {
     List<HerramientaEntity> findByActivaTrue();
     List<HerramientaEntity> findByCategoria_Id(Long categoriaId);
+    List<HerramientaEntity> findByProveedor_Id(Long proveedorId);
 }
