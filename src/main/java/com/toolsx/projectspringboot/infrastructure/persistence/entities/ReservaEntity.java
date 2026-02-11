@@ -13,16 +13,18 @@ public class ReservaEntity {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private UsuarioEntity usuario; // 👈 Usar la entidad JPA
+    private UsuarioEntity usuario; 
 
     @ManyToOne
     @JoinColumn(name = "herramienta_id", nullable = false)
-    private HerramientaEntity herramienta; // 👈 Usar la entidad JPA
+    private HerramientaEntity herramienta; 
 
     private LocalDate fechaReserva;
 
     public ReservaEntity() {
     }
+
+    
 
     public ReservaEntity(LocalDate fechaReserva, HerramientaEntity herramienta, Long id, UsuarioEntity usuario) {
         this.fechaReserva = fechaReserva;
