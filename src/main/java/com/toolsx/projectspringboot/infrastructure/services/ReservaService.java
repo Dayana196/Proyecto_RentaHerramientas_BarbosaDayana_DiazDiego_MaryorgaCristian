@@ -39,6 +39,7 @@ public class ReservaService {
         entity.setUsuario(usuario);
         entity.setHerramienta(herramienta);
         entity.setFechaReserva(request.getFechaReserva());
+        entity.setEstadoReserva(request.getEstadoReserva());
 
         entity = reservasRepository.save(entity);
         return toResponse(entity);
@@ -79,7 +80,8 @@ public class ReservaService {
                 entity.getId(),
                 entity.getUsuario().getId(),
                 entity.getHerramienta().getId(),
-                entity.getFechaReserva()
+                entity.getFechaReserva(),
+                entity.getEstadoReserva()
         );
     }
 }

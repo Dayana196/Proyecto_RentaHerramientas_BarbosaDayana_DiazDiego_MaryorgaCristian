@@ -1,7 +1,14 @@
 package com.toolsx.projectspringboot.infrastructure.persistence.entities;
 
 import java.time.LocalDate;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "reservas")
@@ -21,14 +28,16 @@ public class ReservaEntity {
 
     private LocalDate fechaReserva;
 
+
     public ReservaEntity() {
     }
 
-    public ReservaEntity(LocalDate fechaReserva, HerramientaEntity herramienta, Long id, UsuarioEntity usuario) {
+    public ReservaEntity(LocalDate fechaReserva, HerramientaEntity herramienta, Long id, UsuarioEntity usuario, Enum estadoReserva) {
         this.fechaReserva = fechaReserva;
         this.herramienta = herramienta;
         this.id = id;
         this.usuario = usuario;
+        this.estadoReserva = estadoReserva;
     }
 
     public Long getId() {
@@ -63,5 +72,19 @@ public class ReservaEntity {
         this.fechaReserva = fechaReserva;
     }
 
+    public String setEstadoReserva(Enum estadoReserva) {
+        this.estadoReserva = estadoReserva;
+    }
     
+    public String getEstadoReserva() +{
+        LocalDate hoy = LocalDate.now();
+        if (hoy.isBefore(fechaReserva)) {
+            return "PENDIENTE";
+        } else if (hoy.isEqual(fechaReserva)) {
+            return "APROBADA";
+        } else {
+            return "RECHAZADA";
+        }
+    }
+
 }
