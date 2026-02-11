@@ -42,6 +42,16 @@ public class ReservaController {
         return ResponseEntity.ok(reservaService.actualizar(id, request));
     }
 
+    @PostMapping("/{id}/aprobar")
+    public ResponseEntity<ReservaResponse> aprobarReserva(@PathVariable Long id, ReservaUpdateRequest request){
+        return ResponseEntity.ok(reservaService.aprobarReserva(id, request));
+    }
+
+    @PostMapping("/{id}/rechazar")
+    public ResponseEntity<ReservaResponse> rechazarReserva(@PathVariable Long id, ReservaUpdateRequest request){
+        return ResponseEntity.ok(reservaService.aprobarReserva(id, request));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         reservaService.eliminar(id);

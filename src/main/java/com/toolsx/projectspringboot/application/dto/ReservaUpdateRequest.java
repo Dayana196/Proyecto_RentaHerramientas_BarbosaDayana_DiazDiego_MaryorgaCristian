@@ -9,6 +9,9 @@ public class ReservaUpdateRequest {
     private Long herramientaId;
 
     @NotNull
+    private String estado;
+
+    @NotNull
     private LocalDate fechaReserva;
 
     public Long getHerramientaId() {
@@ -26,4 +29,14 @@ public class ReservaUpdateRequest {
     public void setFechaReserva(LocalDate fechaReserva) {
         this.fechaReserva = fechaReserva;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
 }

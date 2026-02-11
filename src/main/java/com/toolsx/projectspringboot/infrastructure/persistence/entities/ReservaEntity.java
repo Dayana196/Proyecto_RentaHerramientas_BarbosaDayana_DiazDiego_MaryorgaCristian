@@ -15,6 +15,9 @@ public class ReservaEntity {
     @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioEntity usuario; // 👈 Usar la entidad JPA
 
+    @Column(length = 20)
+    private String estado;
+
     @ManyToOne
     @JoinColumn(name = "herramienta_id", nullable = false)
     private HerramientaEntity herramienta; // 👈 Usar la entidad JPA
@@ -24,11 +27,13 @@ public class ReservaEntity {
     public ReservaEntity() {
     }
 
-    public ReservaEntity(LocalDate fechaReserva, HerramientaEntity herramienta, Long id, UsuarioEntity usuario) {
-        this.fechaReserva = fechaReserva;
-        this.herramienta = herramienta;
+    public ReservaEntity(Long id, UsuarioEntity usuario, String estado, HerramientaEntity herramienta,
+            LocalDate fechaReserva) {
         this.id = id;
         this.usuario = usuario;
+        this.estado = estado;
+        this.herramienta = herramienta;
+        this.fechaReserva = fechaReserva;
     }
 
     public Long getId() {
@@ -47,6 +52,14 @@ public class ReservaEntity {
         this.usuario = usuario;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public HerramientaEntity getHerramienta() {
         return herramienta;
     }
@@ -63,5 +76,6 @@ public class ReservaEntity {
         this.fechaReserva = fechaReserva;
     }
 
+    
     
 }

@@ -1,7 +1,9 @@
 ﻿package com.toolsx.projectspringboot.infrastructure.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.toolsx.projectspringboot.application.dto.ReservaCreateRequest;
@@ -54,6 +56,34 @@ public class ReservaService {
         return toResponse(entity);
     }
 
+    
+    public ReservaResponse aprobarReserva(Long id, ReservaUpdateRequest request){
+        ReservaEntity entity = reservasRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Reserva no encontrada"));
+
+        HerramientaEntity herramienta = herramientaRepository.findById(request.getHerramientaId())
+                .orElseThrow(() -> new NotFoundException("Herramienta no disponible"));
+        
+        entity.setHerramienta(herramienta);
+        entity.setEstado("APROVADO");
+        entity.setFechaReserva(request.getFechaReserva());
+        return toResponse(entity);
+    }
+
+    public ReservaResponse rechazarReserva(Long id, ReservaUpdateRequest request){
+        ReservaEntity entity = reservasRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Reserva no encontrada"));
+
+        HerramientaEntity herramienta = herramientaRepository.findById(request.getHerramientaId())
+                .orElseThrow(() -> new NotFoundException("Herramienta no disponible"));
+        
+        entity.setHerramienta(herramienta);
+        entity.setEstado("RECHAZADO");
+        entity.setFechaReserva(request.getFechaReserva());
+        return toResponse(entity);
+    }
+    
+
     public ReservaResponse actualizar(Long id, ReservaUpdateRequest request) {
         ReservaEntity entity = reservasRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Reserva no encontrada"));
@@ -79,7 +109,11 @@ public class ReservaService {
                 entity.getId(),
                 entity.getUsuario().getId(),
                 entity.getHerramienta().getId(),
+                entity.getEstado(),
                 entity.getFechaReserva()
         );
     }
+
+    
+
 }
